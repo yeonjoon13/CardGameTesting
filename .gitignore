@@ -1,0 +1,15 @@
+# Ignore build files
+bin/
+build/
+out/
+*.class
+
+# Ignore IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignore Gradle/Maven files
+.gradle/
+target/
