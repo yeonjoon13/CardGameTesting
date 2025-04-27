@@ -323,4 +323,42 @@ public class VisualBJ extends JFrame implements ActionListener{
 		VisualBJ window = new VisualBJ("Blackjack");
 		window.show();
 	}
+
+	// Functions implemented by tester so that testing can be fulfilled
+
+	public JButton getHitButton() {
+		return hit;
+	}
+
+	public JButton getStayButton() {
+		return stay;
+	}
+
+	public JButton getDealButton() {
+		return deal;
+	}
+
+	public JButton getDoubleDownButton() {
+		return doubledown;
+	}
+
+	public JButton getBetButton() {
+		return bet;
+	}
+
+	public JTextField getBetTextField() {
+		return bettf;
+	}
+
+	public JTextField getResultsTextField() {
+		return results;
+	}
+
+	public BJHand getDealerHand() {
+		return dealerHand;
+	}
+
+	public BJHand getPlayerHand() {
+		return playerHand;
+	}
 }

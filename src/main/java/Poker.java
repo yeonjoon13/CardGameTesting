@@ -540,5 +540,47 @@ public class Poker extends JFrame implements ActionListener{
 		window.show();
 	}
 
+	// Methods added by tester
+	public JButton getDealButton() {
+		return deal;
+	}
+
+	public JButton getBetButton() {
+		return bet;
+	}
+
+	public JButton getCallButton() {
+		return call;
+	}
+
+	public JButton getFoldButton() {
+		return fold;
+	}
+
+	public JTextField getBetTextField() {
+		return bettf;
+	}
+
+	public JTextField getResultsTextField() {
+		return results;
+	}
+
+
+	public JButton getExchangeButton() {
+		return exchange;
+	}
+
+	public PokerHand getPlayerHand() {
+		return playerHand;
+	}
+
+	public PokerHand getDealerHand() {
+		return dealerHand;
+	}
+
+	public JButton[] getKeep() {
+		return keep;
+	}
+
 }
 
