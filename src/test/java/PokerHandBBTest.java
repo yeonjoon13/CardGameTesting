@@ -1,7 +1,4 @@
 import org.junit.jupiter.api.Test;
-import redditgroup.cardgame.Card;
-import redditgroup.cardgame.Deck;
-import redditgroup.cardgame.PokerHand;
 
 import javax.swing.*;
 

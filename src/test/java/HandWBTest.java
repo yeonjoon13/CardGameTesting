@@ -1,6 +1,4 @@
 import org.junit.jupiter.api.Test;
-import redditgroup.cardgame.Card;
-import redditgroup.cardgame.Hand;
 
 import java.util.ArrayList;
 
@@ -65,7 +63,7 @@ public class HandWBTest {
         hand.addCard(c3);
         hand.removeCard(1);
         assertEquals(2, hand.getSize());
-        assertEquals("21", hand.hand.getFirst().getUID());
+        assertEquals("21", hand.hand.get(0).getUID());
         assertEquals("22", hand.hand.get(1).getUID());
     }
 
@@ -95,7 +93,7 @@ public class HandWBTest {
         hand.addCard(c3);
         hand.removeCard(c1);
         assertEquals(2, hand.getSize());
-        assertEquals("21", hand.hand.getFirst().getUID());
+        assertEquals("21", hand.hand.get(0).getUID());
         assertEquals("22", hand.hand.get(1).getUID());
     }
 

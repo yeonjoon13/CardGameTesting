@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.RepeatedTest;
-import redditgroup.cardgame.Card;
-import redditgroup.cardgame.Deck;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

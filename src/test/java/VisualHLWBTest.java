@@ -1,6 +1,4 @@
 import org.junit.jupiter.api.Test;
-import redditgroup.cardgame.Card;
-import redditgroup.cardgame.VisualHL;
 
 import java.awt.event.ActionEvent;
 

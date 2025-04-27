@@ -1,6 +1,4 @@
 import org.junit.jupiter.api.Test;
-import redditgroup.cardgame.Card;
-import redditgroup.cardgame.Deck;
 
 import static org.junit.jupiter.api.Assertions.*;
 

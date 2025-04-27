@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.Test;
-import redditgroup.cardgame.BJHand;
-import redditgroup.cardgame.Card;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 // Whitebox unit testing of BJHand class
 public class BJHandWBTest {
