@@ -1,0 +1,836 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > THpublic</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: THpublic (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">THpublic</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.8%
+  </span>
+  <span class="absValue">
+    (23/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92.9%
+  </span>
+  <span class="absValue">
+    (13/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.6%
+  </span>
+  <span class="absValue">
+    (227/235)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">THpublic$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">THpublic$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (6/8)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">THpublic$ButtonListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+  <span class="absValue">
+    (7/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    63.6%
+  </span>
+  <span class="absValue">
+    (14/22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    94.4%
+  </span>
+  <span class="absValue">
+    (34/36)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">THpublic$ButtonListener$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">THpublic$ButtonListener$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    71.4%
+  </span>
+  <span class="absValue">
+    (20/28)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.8%
+  </span>
+  <span class="absValue">
+    (43/49)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    90.2%
+  </span>
+  <span class="absValue">
+    (37/41)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (51/68)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.9%
+  </span>
+  <span class="absValue">
+    (323/344)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;/*
+&nbsp; * Texas Holdem Program
+&nbsp; *
+&nbsp; * Created by Michael Melchione
+&nbsp; */
+&nbsp;
+&nbsp;// Public accessible file for whitebox testing
+&nbsp;
+&nbsp;
+&nbsp;import javax.swing.*;
+&nbsp;import javax.swing.border.BevelBorder;
+&nbsp;import javax.swing.border.Border;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.ActionEvent;
+&nbsp;import java.awt.event.ActionListener;
+&nbsp;import java.awt.event.FocusEvent;
+&nbsp;import java.awt.event.FocusListener;
+&nbsp;
+&nbsp;@SuppressWarnings(&quot;serial&quot;)
+&nbsp;public class THpublic extends JFrame {
+&nbsp;    JPanel dealerPanel;
+&nbsp;    JPanel playerPanel;
+&nbsp;    JPanel communityPanel;
+&nbsp;    JPanel buttonsPanel;
+&nbsp;    JPanel log;
+&nbsp;
+&nbsp;    Deck deck;
+&nbsp;
+&nbsp;    JLabel console;
+&nbsp;
+&nbsp;    JLabel[] dealerCards;
+&nbsp;    JLabel[] playerCards;
+&nbsp;    JLabel[] communityCards;
+&nbsp;
+&nbsp;    ImageIcon background;
+&nbsp;
+&nbsp;    JButton deal;
+&nbsp;    JButton call;
+&nbsp;    JButton fold;
+&nbsp;    JButton bet;
+&nbsp;    JTextField betAmount;
+&nbsp;
+&nbsp;    PokerHand player;
+&nbsp;    PokerHand dealer;
+&nbsp;    PokerHand community;
+&nbsp;
+&nbsp;    Border sunkIn;
+&nbsp;
+<b class="fc">&nbsp;    int pot = 0;</b>
+<b class="fc">&nbsp;    int playerBet = 0;</b>
+<b class="fc">&nbsp;    int dealerBet = 0;</b>
+<b class="fc">&nbsp;    int previousBet = 0;</b>
+&nbsp;
+&nbsp;    public THpublic(String name) {
+<b class="fc">&nbsp;        super(name);</b>
+<b class="fc">&nbsp;        super.setDefaultCloseOperation(EXIT_ON_CLOSE);</b>
+<b class="fc">&nbsp;        super.setLayout(null);</b>
+<b class="fc">&nbsp;        setBackground(new Color(0, 100, 0));</b>
+&nbsp;
+<b class="fc">&nbsp;        player = new PokerHand();</b>
+<b class="fc">&nbsp;        dealer = new PokerHand();</b>
+<b class="fc">&nbsp;        community = new PokerHand();</b>
+&nbsp;
+<b class="fc">&nbsp;        deck = new Deck();</b>
+&nbsp;
+<b class="fc">&nbsp;        background = new ImageIcon(&quot;Cards/b.gif&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        sunkIn = BorderFactory.createBevelBorder(BevelBorder.LOWERED); //Create a border so it can be used in all components</b>
+&nbsp;
+<b class="fc">&nbsp;        CreateDealerComposite();</b>
+<b class="fc">&nbsp;        CreateCommunityComposite();</b>
+<b class="fc">&nbsp;        CreateButtonsComposite();</b>
+<b class="fc">&nbsp;        CreatePlayerComposite();</b>
+&nbsp;
+<b class="fc">&nbsp;        final JLabel dealerLabel = new JLabel();</b>
+<b class="fc">&nbsp;        dealerLabel.setText(&quot;Dealer Cards&quot;);</b>
+<b class="fc">&nbsp;        dealerLabel.setHorizontalAlignment(JLabel.CENTER);</b>
+<b class="fc">&nbsp;        dealerLabel.setBounds(5, 5, dealerPanel.getWidth(), 20);</b>
+&nbsp;
+<b class="fc">&nbsp;        final JLabel communityLabel = new JLabel();</b>
+<b class="fc">&nbsp;        communityLabel.setText(&quot;Community Cards&quot;);</b>
+<b class="fc">&nbsp;        communityLabel.setHorizontalAlignment(JLabel.CENTER);</b>
+<b class="fc">&nbsp;        communityLabel.setBounds(dealerLabel.getWidth() + 5, 5, communityPanel.getWidth(), 20);</b>
+&nbsp;
+<b class="fc">&nbsp;        final JLabel playerLabel = new JLabel();</b>
+<b class="fc">&nbsp;        playerLabel.setText(&quot;Player Cards&quot;);</b>
+<b class="fc">&nbsp;        playerLabel.setHorizontalAlignment(JLabel.CENTER);</b>
+<b class="fc">&nbsp;        playerLabel.setBounds(5, buttonsPanel.getBounds().y + buttonsPanel.getHeight() + 5, buttonsPanel.getWidth(), 25);</b>
+&nbsp;
+<b class="fc">&nbsp;        console = new JLabel();</b>
+<b class="fc">&nbsp;        console.setHorizontalAlignment(JLabel.CENTER);</b>
+<b class="fc">&nbsp;        console.setBorder(sunkIn);</b>
+<b class="fc">&nbsp;        console.setBounds(5, playerPanel.getBounds().y + playerPanel.getHeight() + 5, buttonsPanel.getWidth(), 25);</b>
+<b class="fc">&nbsp;        console.setBackground(Color.white);</b>
+<b class="fc">&nbsp;        console.setText(&quot;- Welcome to Texas Hold&#39;em!!! -&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        add(dealerLabel);</b>
+<b class="fc">&nbsp;        add(dealerPanel);</b>
+<b class="fc">&nbsp;        add(communityLabel);</b>
+<b class="fc">&nbsp;        add(communityPanel);</b>
+<b class="fc">&nbsp;        add(buttonsPanel);</b>
+<b class="fc">&nbsp;        add(playerPanel);</b>
+<b class="fc">&nbsp;        add(playerLabel);</b>
+<b class="fc">&nbsp;        add(console);</b>
+&nbsp;
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    private void CreatePlayerComposite() {
+&nbsp;
+<b class="fc">&nbsp;        playerCards = new JLabel[2];</b>
+&nbsp;
+<b class="fc">&nbsp;        playerPanel = new JPanel();</b>
+<b class="fc">&nbsp;        playerPanel.setLayout(null);</b>
+<b class="fc">&nbsp;        playerPanel.setBorder(sunkIn);</b>
+&nbsp;
+<b class="fc">&nbsp;        playerPanel.setBounds(205, 217, 161, 107);</b>
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;Player Panel Bounds: &quot; + playerPanel.getBounds());</b>
+&nbsp;
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    private void CreateButtonsComposite() {
+<b class="fc">&nbsp;        buttonsPanel = new JPanel();</b>
+<b class="fc">&nbsp;        buttonsPanel.setLayout(new GridLayout(1, 5));</b>
+<b class="fc">&nbsp;        buttonsPanel.setBorder(sunkIn);</b>
+&nbsp;
+<b class="fc">&nbsp;        deal = new JButton(&quot;Deal&quot;);</b>
+<b class="fc">&nbsp;        deal.setActionCommand(&quot;deal&quot;);</b>
+<b class="fc">&nbsp;        deal.addActionListener(new ButtonListener());</b>
+&nbsp;
+<b class="fc">&nbsp;        call = new JButton(&quot;Call / Check&quot;);</b>
+<b class="fc">&nbsp;        call.setActionCommand(&quot;call&quot;);</b>
+<b class="fc">&nbsp;        call.addActionListener(new ButtonListener());</b>
+<b class="fc">&nbsp;        call.setEnabled(false);</b>
+&nbsp;
+<b class="fc">&nbsp;        fold = new JButton(&quot;Fold&quot;);</b>
+<b class="fc">&nbsp;        fold.setActionCommand(&quot;fold&quot;);</b>
+<b class="fc">&nbsp;        fold.addActionListener(new ButtonListener());</b>
+<b class="fc">&nbsp;        fold.setEnabled(false);</b>
+&nbsp;
+<b class="fc">&nbsp;        bet = new JButton(&quot;Bet&quot;);</b>
+<b class="fc">&nbsp;        bet.setActionCommand(&quot;bet&quot;);</b>
+<b class="fc">&nbsp;        bet.addActionListener(new ButtonListener());</b>
+<b class="fc">&nbsp;        bet.setEnabled(false);</b>
+&nbsp;
+<b class="fc">&nbsp;        betAmount = new JTextField(&quot;-Enter Bet Amount-&quot;);</b>
+<b class="fc">&nbsp;        betAmount.setHorizontalAlignment(JTextField.CENTER);</b>
+<b class="fc">&nbsp;        betAmount.addFocusListener(new FocusListener() {</b>
+&nbsp;            @Override
+&nbsp;            public void focusGained(FocusEvent e) {
+<b class="nc">&nbsp;                betAmount.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+&nbsp;            @Override
+&nbsp;            public void focusLost(FocusEvent arg0) {
+&nbsp;
+<b class="nc">&nbsp;            }</b>
+&nbsp;        });
+<b class="fc">&nbsp;        betAmount.setEnabled(false);</b>
+&nbsp;
+<b class="fc">&nbsp;        buttonsPanel.add(deal);</b>
+<b class="fc">&nbsp;        buttonsPanel.add(call);</b>
+<b class="fc">&nbsp;        buttonsPanel.add(fold);</b>
+<b class="fc">&nbsp;        buttonsPanel.add(bet);</b>
+<b class="fc">&nbsp;        buttonsPanel.add(betAmount);</b>
+&nbsp;
+<b class="fc">&nbsp;        buttonsPanel.setBounds(5, dealerPanel.getHeight() + 10 + 30 + 5, dealerPanel.getWidth() + 15 + communityPanel.getWidth(), 30);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    private void CreateCommunityComposite() {
+&nbsp;
+<b class="fc">&nbsp;        communityCards = new JLabel[5];</b>
+&nbsp;
+<b class="fc">&nbsp;        communityPanel = new JPanel();</b>
+<b class="fc">&nbsp;        communityPanel.setLayout(null);</b>
+<b class="fc">&nbsp;        communityPanel.setBorder(sunkIn);</b>
+&nbsp;
+<b class="fc">&nbsp;        communityPanel.setBounds(181, 30, 395, 107);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Community Panel Bounds :&quot; + communityPanel.getBounds());</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    private void CreateDealerComposite() {
+&nbsp;
+<b class="fc">&nbsp;        dealerCards = new JLabel[2];</b>
+&nbsp;
+<b class="fc">&nbsp;        dealerPanel = new JPanel();</b>
+<b class="fc">&nbsp;        dealerPanel.setLayout(null); //No layout so cards can be centered in dealerPanel</b>
+<b class="fc">&nbsp;        dealerPanel.setBorder(sunkIn);</b>
+&nbsp;
+<b class="fc">&nbsp;        dealerPanel.setBounds(5, 30, 161, 107); //Set size of dealer panel to fit cards perfectly</b>
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;Dealer Panel Bounds: &quot; + dealerPanel.getBounds());</b>
+&nbsp;
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    private int currentPlayerCard = 0;</b>
+<b class="fc">&nbsp;    private int playerTotalWidth = 5;</b>
+&nbsp;
+&nbsp;    private void CreatePlayerCard() {
+<b class="fc">&nbsp;        int i = currentPlayerCard;</b>
+<b class="fc">&nbsp;        playerCards[i] = new JLabel();</b>
+<b class="fc">&nbsp;        player.addCard(deck.dealCard());</b>
+<b class="fc">&nbsp;        ImageIcon playerIcon = new ImageIcon(player.getCard(i).getFileName());</b>
+<b class="fc">&nbsp;        playerCards[i].setIcon(playerIcon);</b>
+<b class="fc">&nbsp;        playerCards[i].setBounds(playerTotalWidth, 5, playerIcon.getIconWidth(), playerIcon.getIconHeight());</b>
+<b class="fc">&nbsp;        playerTotalWidth += playerCards[i].getWidth() + 5;</b>
+<b class="fc">&nbsp;        playerPanel.add(playerCards[i]);</b>
+<b class="fc">&nbsp;        currentPlayerCard += 1;</b>
+<b class="fc">&nbsp;        playerPanel.updateUI();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    private int dealerTotalWidth = 5;</b>
+<b class="fc">&nbsp;    private int dealerCurrentCard = 0;</b>
+&nbsp;
+&nbsp;    private void CreateDealerCards() {
+&nbsp;
+<b class="fc">&nbsp;        int i = dealerCurrentCard;</b>
+&nbsp;
+<b class="fc">&nbsp;        dealerCards[i] = new JLabel();</b>
+<b class="fc">&nbsp;        dealerCards[i].setIcon(background);</b>
+<b class="fc">&nbsp;        dealer.addCard(deck.dealCard());</b>
+<b class="fc">&nbsp;        dealerCards[i].setBounds(dealerTotalWidth, 5, background.getIconWidth(), background.getIconHeight());</b>
+<b class="fc">&nbsp;        dealerPanel.add(dealerCards[i]);</b>
+<b class="fc">&nbsp;        dealerCurrentCard += 1;</b>
+<b class="fc">&nbsp;        dealerTotalWidth += dealerCards[i].getWidth() + 5;</b>
+<b class="fc">&nbsp;        dealerPanel.updateUI();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    int communityTotalWidth = 5;</b>
+<b class="fc">&nbsp;    int communityCurrentCard = 0;</b>
+&nbsp;
+&nbsp;    private void CreateCommunityCards() {
+<b class="fc">&nbsp;        int i = communityCurrentCard;</b>
+<b class="fc">&nbsp;        communityCards[i] = new JLabel();</b>
+<b class="fc">&nbsp;        community.addCard(deck.dealCard());</b>
+<b class="fc">&nbsp;        ImageIcon icon = new ImageIcon(community.getCard(i).getFileName());</b>
+<b class="fc">&nbsp;        communityCards[i].setIcon(icon);</b>
+<b class="fc">&nbsp;        communityCards[i].setBounds(communityTotalWidth, 5, icon.getIconWidth(), icon.getIconHeight());</b>
+<b class="fc">&nbsp;        communityPanel.add(communityCards[i]);</b>
+<b class="fc">&nbsp;        communityTotalWidth += communityCards[i].getWidth() + 5;</b>
+<b class="fc">&nbsp;        communityCurrentCard += 1;</b>
+<b class="fc">&nbsp;        dealer.addCard(community.getCard(i));</b>
+<b class="fc">&nbsp;        player.addCard(community.getCard(i));</b>
+<b class="fc">&nbsp;        communityPanel.updateUI();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    private boolean dealerFolded = false;</b>
+<b class="fc">&nbsp;    private boolean dealerHasBet = false;</b>
+<b class="fc">&nbsp;    private boolean dealerRaise = false;</b>
+&nbsp;    private boolean dealerHasRaised;
+&nbsp;
+&nbsp;    public void dealersTurn() {
+<b class="fc">&nbsp;        dealerBet = dealer.bet(playerBet);</b>
+<b class="fc">&nbsp;        if(dealerBet == -1){</b>
+<b class="fc">&nbsp;            consoleSetText(&quot;The dealer folded. You win $&quot; + pot + &quot;!&quot;);</b>
+<b class="fc">&nbsp;            pot = 0;</b>
+<b class="fc">&nbsp;            bet.setEnabled(false);</b>
+<b class="fc">&nbsp;            betAmount.setEnabled(false);</b>
+<b class="fc">&nbsp;            fold.setEnabled(false);</b>
+<b class="fc">&nbsp;            call.setEnabled(false);</b>
+<b class="fc">&nbsp;            deal.setEnabled(true);</b>
+<b class="fc">&nbsp;            dealerFolded = true;</b>
+<b class="fc">&nbsp;            showCards();</b>
+<b class="nc">&nbsp;            endGame();</b>
+<b class="nc">&nbsp;            return;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(dealerBet &gt; playerBet){</b>
+<b class="fc">&nbsp;            consoleSetText(&quot;The dealer has raised you $&quot; + (dealerBet - playerBet) + &quot;!&quot;);</b>
+<b class="fc">&nbsp;            pot += dealerBet;</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Pot: $&quot; + pot);</b>
+<b class="fc">&nbsp;            call.setEnabled(true);</b>
+<b class="fc">&nbsp;            fold.setEnabled(true);</b>
+<b class="fc">&nbsp;            bet.setEnabled(true);</b>
+<b class="fc">&nbsp;            betAmount.setEnabled(true);</b>
+<b class="fc">&nbsp;            dealerHasRaised = true;</b>
+<b class="fc">&nbsp;            return;</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="fc">&nbsp;            consoleSetText(&quot;The dealer called.&quot;);</b>
+<b class="fc">&nbsp;            pot += dealerBet;</b>
+<b class="fc">&nbsp;            dealerBet = 0;</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Pot: $&quot; + pot);</b>
+&nbsp;        }
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    private void showCards() {
+<b class="fc">&nbsp;        for(int i = 0; i &lt; 2; i++) {</b>
+<b class="fc">&nbsp;            dealerCards[i].setIcon(new ImageIcon(dealer.getCard(i).getFileName()));</b>
+&nbsp;        }
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    private boolean hasBet = false;</b>
+&nbsp;
+&nbsp;    public void getPlayerBet(String action) {
+<b class="fc">&nbsp;        if(!action.equals(&quot;call&quot;)) {</b>
+&nbsp;            try { //Put in a catch clause to easily check if the player has input a valid number
+<b class="fc">&nbsp;                playerBet = Integer.parseInt(betAmount.getText().trim());</b>
+<b class="fc">&nbsp;                pot += playerBet;</b>
+<b class="fc">&nbsp;                hasBet = true;</b>
+<b class="fc">&nbsp;                betAmount.setText(&quot;&quot;);</b>
+&nbsp;            } catch (NumberFormatException e) {
+<b class="fc">&nbsp;                hasBet = false;</b>
+<b class="fc">&nbsp;                consoleSetText(&quot;Please enter a valid number&quot;);</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            hasBet = true;</b>
+<b class="fc">&nbsp;            betAmount.setText(&quot;&quot;);</b>
+<b class="fc">&nbsp;            playerBet = 0;</b>
+<b class="fc">&nbsp;            dealerBet = 0;</b>
+&nbsp;        }
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public void endGame() {
+<b class="fc">&nbsp;        showCards();</b>
+<b class="fc">&nbsp;        deal.setEnabled(true);</b>
+<b class="fc">&nbsp;        bet.setEnabled(false);</b>
+<b class="fc">&nbsp;        call.setEnabled(false);</b>
+<b class="fc">&nbsp;        fold.setEnabled(false);</b>
+<b class="fc">&nbsp;        betAmount.setText(&quot;-Enter Bet Amount-&quot;);</b>
+<b class="fc">&nbsp;        betAmount.setEnabled(false);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    String betStage = &quot;Flop&quot;;</b>
+&nbsp;
+&nbsp;    public void initialize() {
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 0; i &lt; dealerCards.length; i++) {</b>
+<b class="fc">&nbsp;            dealerCards[i].setIcon(null);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        for(int i = 0; i &lt; playerCards.length; i++) {</b>
+<b class="fc">&nbsp;            playerCards[i].setIcon(null);</b>
+&nbsp;        }
+<b class="pc">&nbsp;        for(int i = 0; i &lt; community.getSize(); i++) {</b>
+<b class="nc">&nbsp;            communityCards[i].setIcon(null);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        player = new PokerHand();</b>
+<b class="fc">&nbsp;        dealer = new PokerHand();</b>
+<b class="fc">&nbsp;        community = new PokerHand();</b>
+<b class="fc">&nbsp;        pot = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;        deck = new Deck();</b>
+<b class="fc">&nbsp;        dealerFolded = false;</b>
+<b class="fc">&nbsp;        deal.setEnabled(true);</b>
+<b class="fc">&nbsp;        bet.setEnabled(false);</b>
+<b class="fc">&nbsp;        call.setEnabled(false);</b>
+<b class="fc">&nbsp;        fold.setEnabled(false);</b>
+<b class="fc">&nbsp;        betAmount.setEnabled(false);</b>
+<b class="fc">&nbsp;        betStage = &quot;Flop&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        currentPlayerCard = 0;</b>
+<b class="fc">&nbsp;        playerTotalWidth = 5;</b>
+<b class="fc">&nbsp;        dealerCurrentCard = 0;</b>
+<b class="fc">&nbsp;        dealerTotalWidth = 5;</b>
+<b class="fc">&nbsp;        communityCurrentCard = 0;</b>
+<b class="fc">&nbsp;        communityTotalWidth = 5;</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public void consoleSetText(final String s) {
+<b class="fc">&nbsp;        Thread t = new Thread() {</b>
+&nbsp;            @Override
+&nbsp;            public void run() {
+<b class="fc">&nbsp;                console.setText(s);</b>
+&nbsp;                try {
+<b class="fc">&nbsp;                    Thread.sleep(5000);</b>
+<b class="nc">&nbsp;                } catch (InterruptedException e) {</b>
+&nbsp;                    // TODO Auto-generated catch block
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+<b class="fc">&nbsp;                }</b>
+<b class="fc">&nbsp;                console.setText(&quot;&quot;);</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;        };
+<b class="fc">&nbsp;        t.start();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    private boolean isNewGame = false;</b>
+&nbsp;
+<b class="fc">&nbsp;    private class ButtonListener implements ActionListener {</b>
+&nbsp;
+&nbsp;        @Override
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="fc">&nbsp;            String event = e.getActionCommand();</b>
+<b class="pc">&nbsp;            switch(event) {</b>
+&nbsp;                case &quot;deal&quot;:
+<b class="fc">&nbsp;                    DealCards();</b>
+<b class="fc">&nbsp;                    break;</b>
+&nbsp;                case &quot;call&quot;:
+<b class="fc">&nbsp;                    CallHand();</b>
+<b class="fc">&nbsp;                    break;</b>
+&nbsp;                case &quot;bet&quot;:
+<b class="fc">&nbsp;                    BetHand();</b>
+<b class="fc">&nbsp;                    break;</b>
+&nbsp;                case &quot;fold&quot;:
+<b class="fc">&nbsp;                    FoldHand();</b>
+<b class="fc">&nbsp;                    break;</b>
+&nbsp;                case &quot;raise&quot;:
+<b class="nc">&nbsp;                    Raise();</b>
+&nbsp;                    break;
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        public void Raise() {
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        public void DealCards() {
+&nbsp;
+<b class="fc">&nbsp;            if(isNewGame) {</b>
+<b class="fc">&nbsp;                initialize();</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            isNewGame = true;</b>
+&nbsp;
+<b class="fc">&nbsp;            fold.setEnabled(true);</b>
+<b class="fc">&nbsp;            call.setEnabled(true);</b>
+<b class="fc">&nbsp;            bet.setEnabled(true);</b>
+&nbsp;
+<b class="fc">&nbsp;            deck.shuffle();</b>
+&nbsp;
+<b class="fc">&nbsp;            Thread t = new Thread() {</b>
+&nbsp;                @Override
+&nbsp;                public void run() {
+<b class="fc">&nbsp;                    boolean isDealer = false;</b>
+<b class="fc">&nbsp;                    for(int i = 0; i &lt; 4; i++) {</b>
+<b class="fc">&nbsp;                        if(isDealer) {</b>
+<b class="fc">&nbsp;                            CreateDealerCards();</b>
+<b class="fc">&nbsp;                            isDealer = false;</b>
+&nbsp;                        } else {
+<b class="fc">&nbsp;                            CreatePlayerCard();</b>
+<b class="fc">&nbsp;                            isDealer = true;</b>
+&nbsp;                        }
+&nbsp;                        try {
+<b class="fc">&nbsp;                            Thread.sleep(500);</b>
+<b class="fc">&nbsp;                        } catch (InterruptedException e) {}</b>
+&nbsp;                    }
+<b class="fc">&nbsp;                    betAmount.setEnabled(true);</b>
+<b class="fc">&nbsp;                }</b>
+&nbsp;            };
+&nbsp;
+<b class="fc">&nbsp;            t.start();</b>
+<b class="fc">&nbsp;            deal.setEnabled(false);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        public void PlayHand(final String action) {
+<b class="fc">&nbsp;            Thread t = new Thread() {</b>
+&nbsp;                @Override
+&nbsp;                public void run() {
+<b class="fc">&nbsp;                    if(betStage.equals(&quot;Flop&quot;)) {</b>
+<b class="fc">&nbsp;                        getPlayerBet(action);</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Pot: $&quot; + pot);</b>
+<b class="fc">&nbsp;                        if(hasBet) {</b>
+<b class="fc">&nbsp;                            dealersTurn();</b>
+<b class="fc">&nbsp;                            if(!dealerHasRaised) {</b>
+<b class="pc">&nbsp;                                if(!dealerFolded) {</b>
+<b class="fc">&nbsp;                                    for(int i = 0; i &lt; 3; i++) {</b>
+<b class="fc">&nbsp;                                        CreateCommunityCards();</b>
+&nbsp;                                        try {
+<b class="fc">&nbsp;                                            Thread.sleep(500);</b>
+<b class="fc">&nbsp;                                        } catch (InterruptedException e) {};</b>
+&nbsp;                                    }
+<b class="fc">&nbsp;                                    hasBet = false;</b>
+<b class="fc">&nbsp;                                    betStage = &quot;FourthStreet&quot;;</b>
+&nbsp;                                }
+&nbsp;                            } else {
+<b class="fc">&nbsp;                                dealerHasRaised = false;</b>
+&nbsp;                            }
+&nbsp;                        }
+<b class="fc">&nbsp;                        dealerBet = 0;</b>
+<b class="fc">&nbsp;                        playerBet = 0;</b>
+<b class="fc">&nbsp;                    } else if (betStage.equals(&quot;FourthStreet&quot;)) {</b>
+<b class="fc">&nbsp;                        getPlayerBet(action);</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Pot: $&quot; + pot);</b>
+<b class="pc">&nbsp;                        if(hasBet) {</b>
+<b class="fc">&nbsp;                            CreateCommunityCards();</b>
+<b class="fc">&nbsp;                            hasBet = false;</b>
+<b class="fc">&nbsp;                            dealersTurn();</b>
+<b class="fc">&nbsp;                            betStage = &quot;River&quot;;</b>
+&nbsp;                        }
+<b class="fc">&nbsp;                    } else if (betStage.equals(&quot;River&quot;)) {</b>
+<b class="fc">&nbsp;                        getPlayerBet(action);</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Pot: $&quot; + pot);</b>
+<b class="pc">&nbsp;                        if(hasBet) {</b>
+<b class="fc">&nbsp;                            CreateCommunityCards();</b>
+<b class="fc">&nbsp;                            hasBet = false;</b>
+<b class="fc">&nbsp;                            dealersTurn();</b>
+<b class="fc">&nbsp;                            betStage = &quot;Post&quot;;</b>
+<b class="pc">&nbsp;                            if(player.PokerValue()[0] == dealer.PokerValue()[0]){</b>
+<b class="fc">&nbsp;                                if(player.PokerValue()[1] &gt; dealer.PokerValue()[1]){</b>
+<b class="fc">&nbsp;                                    console.setText(&quot;You win $&quot; + pot + &quot; with a &quot; + player.showPokerValue());</b>
+<b class="fc">&nbsp;                                    endGame();</b>
+&nbsp;                                }
+<b class="fc">&nbsp;                                else if(player.PokerValue()[1] &lt; dealer.PokerValue()[1]){</b>
+<b class="fc">&nbsp;                                    console.setText(&quot;You lose $&quot; + pot + &quot; to a &quot; + dealer.showPokerValue());</b>
+<b class="fc">&nbsp;                                    endGame();</b>
+&nbsp;                                }
+&nbsp;                            }
+<b class="nc">&nbsp;                            else if(player.PokerValue()[0] &gt; dealer.PokerValue()[0]){</b>
+<b class="nc">&nbsp;                                console.setText(&quot;You win $&quot; + pot + &quot; with a &quot; + player.showPokerValue());</b>
+<b class="nc">&nbsp;                                endGame();</b>
+&nbsp;                            }
+<b class="nc">&nbsp;                            else if(player.PokerValue()[0] &lt; dealer.PokerValue()[0]){</b>
+<b class="nc">&nbsp;                                console.setText(&quot;You lose $&quot; + pot + &quot; to a &quot; + dealer.showPokerValue());</b>
+<b class="nc">&nbsp;                                endGame();</b>
+&nbsp;                            }
+&nbsp;                        }
+&nbsp;
+&nbsp;                    } else {
+<b class="fc">&nbsp;                        System.out.println(&quot;Returned&quot;);</b>
+<b class="fc">&nbsp;                        return;</b>
+&nbsp;                    }
+<b class="fc">&nbsp;                }</b>
+&nbsp;            };
+<b class="fc">&nbsp;            t.start();</b>
+&nbsp;
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        public void CallHand() {
+<b class="fc">&nbsp;            hasBet = true;</b>
+<b class="fc">&nbsp;            PlayHand(&quot;call&quot;);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        public void BetHand() {
+<b class="fc">&nbsp;            PlayHand(&quot;bet&quot;);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        public void FoldHand() {
+<b class="fc">&nbsp;            consoleSetText(&quot;You&#39;ve Folded&quot;);</b>
+<b class="fc">&nbsp;            endGame();</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void main(String[] args){
+<b class="nc">&nbsp;        final TH window = new TH(&quot;Texas Holdem&quot;);</b>
+<b class="nc">&nbsp;        window.setSize(590, 387);</b>
+<b class="nc">&nbsp;        window.setLocationRelativeTo(null);</b>
+<b class="nc">&nbsp;        window.setVisible(true);</b>
+&nbsp;		/*
+&nbsp;		window.addComponentListener(new ComponentAdapter() {
+&nbsp;			@Override
+&nbsp;			public void componentResized(ComponentEvent e) {
+&nbsp;				System.out.println(window.getSize());
+&nbsp;			}
+&nbsp;		});
+&nbsp;		*/
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    //Files added for testing
+&nbsp;    public PokerHand getPlayerHand() {
+<b class="fc">&nbsp;        return player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public PokerHand getDealerHand() {
+<b class="fc">&nbsp;        return dealer;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public PokerHand getCommunityHand() {
+<b class="fc">&nbsp;        return community;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public JButton getDealButton() {
+<b class="fc">&nbsp;        return deal;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public JButton getCallButton() {
+<b class="fc">&nbsp;        return call;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public JButton getFoldButton() {
+<b class="fc">&nbsp;        return fold;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public JButton getBetButton() {
+<b class="fc">&nbsp;        return bet;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public JTextField getBetAmountField() {
+<b class="fc">&nbsp;        return betAmount;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public JLabel getConsole() {
+<b class="fc">&nbsp;        return console;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-28 16:42</div>
+</div>
+</body>
+</html>

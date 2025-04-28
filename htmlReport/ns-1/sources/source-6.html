@@ -1,0 +1,702 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Poker</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Poker (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Poker</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    89.5%
+  </span>
+  <span class="absValue">
+    (102/114)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.5%
+  </span>
+  <span class="absValue">
+    (301/312)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;/*
+&nbsp; *
+&nbsp; *
+&nbsp; * Poker Program
+&nbsp; *
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;
+&nbsp;import java.awt.Color;
+&nbsp;import java.awt.Dimension;
+&nbsp;import java.awt.event.ActionEvent;
+&nbsp;import java.awt.event.ActionListener;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;import javax.swing.Box;
+&nbsp;import javax.swing.BoxLayout;
+&nbsp;import javax.swing.Icon;
+&nbsp;import javax.swing.ImageIcon;
+&nbsp;import javax.swing.JButton;
+&nbsp;import javax.swing.JFrame;
+&nbsp;import javax.swing.JLabel;
+&nbsp;import javax.swing.JPanel;
+&nbsp;import javax.swing.JTextField;
+&nbsp;
+&nbsp;import java.util.Iterator;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;public class Poker extends JFrame implements ActionListener{
+<b class="fc">&nbsp;    static int cardkeys = 0;</b>
+<b class="fc">&nbsp;	JButton[] keep = new JButton[5];</b>
+&nbsp;	JButton deal;
+&nbsp;	JLabel dc;
+&nbsp;	JLabel yc;
+&nbsp;	JLabel pot;
+&nbsp;	JTextField results;
+&nbsp;	JLabel[] dealercards;
+&nbsp;	JLabel[] playercards;
+&nbsp;	JButton bet;
+&nbsp;	boolean exchanged;
+&nbsp;	JTextField bettf;
+&nbsp;	JButton call;
+&nbsp;	int playerbet;
+&nbsp;	int dealbet;
+&nbsp;	int amount;
+&nbsp;	JButton fold;
+&nbsp;	JPanel dealer;
+&nbsp;	JPanel buttons, buttons2;
+&nbsp;	JPanel player;
+&nbsp;	JPanel ex;
+&nbsp;	Deck deck;
+&nbsp;	PokerHand playerHand;
+&nbsp;	PokerHand dealerHand;
+&nbsp;	Icon iconName;
+&nbsp;	//ArrayList&lt;Card&gt; keepcards;
+&nbsp;    Map&lt;String,Card&gt; keepcards;
+&nbsp;	JButton exchange;
+&nbsp;
+&nbsp;	public Poker(String name){
+<b class="fc">&nbsp;		super(name);</b>
+<b class="fc">&nbsp;        super.setDefaultCloseOperation(EXIT_ON_CLOSE);</b>
+<b class="fc">&nbsp;        setBackground(new Color(0, 100, 0));</b>
+<b class="fc">&nbsp;		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));</b>
+<b class="fc">&nbsp;		setSize(600, 380);</b>
+<b class="fc">&nbsp;		keepcards = new HashMap&lt;String, Card&gt;();</b>
+<b class="fc">&nbsp;		deal = new JButton(&quot;Deal&quot;);</b>
+<b class="fc">&nbsp;		dc = new JLabel(&quot;Dealer:&quot;);</b>
+<b class="fc">&nbsp;		yc = new JLabel(&quot;Player:&quot;);</b>
+<b class="fc">&nbsp;		bet = new JButton(&quot;Bet!&quot;);</b>
+<b class="fc">&nbsp;		bettf = new JTextField(&quot;-enter amount-&quot;);</b>
+<b class="fc">&nbsp;		call = new JButton(&quot;Call&quot;);</b>
+<b class="fc">&nbsp;		fold = new JButton(&quot;Fold&quot;);</b>
+<b class="fc">&nbsp;		pot = new JLabel(&quot;Pot: 0&quot;);</b>
+<b class="fc">&nbsp;		amount = 0;</b>
+<b class="fc">&nbsp;		dealbet = 0;</b>
+<b class="fc">&nbsp;		playerbet = 0;</b>
+<b class="fc">&nbsp;		results = new JTextField(50);</b>
+<b class="fc">&nbsp;		dealercards = new JLabel[7];</b>
+<b class="fc">&nbsp;		playercards = new JLabel[7];</b>
+<b class="fc">&nbsp;		exchange = new JButton(&quot;Exchange&quot;);</b>
+<b class="fc">&nbsp;		exchange.setEnabled(false);</b>
+<b class="fc">&nbsp;		exchanged = false;</b>
+<b class="fc">&nbsp;		ex = new JPanel();</b>
+<b class="fc">&nbsp;		dealer = new JPanel();</b>
+<b class="fc">&nbsp;		buttons = new JPanel();</b>
+<b class="fc">&nbsp;		buttons2 = new JPanel();</b>
+<b class="fc">&nbsp;		player = new JPanel();</b>
+<b class="fc">&nbsp;		dealer.add(dc);</b>
+<b class="fc">&nbsp;		player.add(yc);</b>
+<b class="fc">&nbsp;		iconName = new ImageIcon();</b>
+<b class="fc">&nbsp;		for(int i = 0; i &lt;= 6; i++){</b>
+<b class="fc">&nbsp;			dealercards[i] = new JLabel();</b>
+<b class="fc">&nbsp;			playercards[i] = new JLabel();</b>
+<b class="fc">&nbsp;			dealer.add(dealercards[i]);</b>
+<b class="fc">&nbsp;			player.add(playercards[i]);</b>
+&nbsp;		}
+&nbsp;
+<b class="fc">&nbsp;		ex.add(exchange);</b>
+<b class="fc">&nbsp;		buttons.add(deal);</b>
+<b class="fc">&nbsp;		buttons.add(pot);</b>
+<b class="fc">&nbsp;		buttons.add(bet);</b>
+<b class="fc">&nbsp;		buttons.add(bettf);</b>
+<b class="fc">&nbsp;		buttons.add(call);</b>
+<b class="fc">&nbsp;		buttons.add(fold);</b>
+<b class="fc">&nbsp;		add(dealer);</b>
+<b class="fc">&nbsp;		add(buttons);</b>
+<b class="fc">&nbsp;		add(player);</b>
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;		deal.setActionCommand(&quot;deal&quot;);</b>
+<b class="fc">&nbsp;		deal.addActionListener(this);</b>
+&nbsp;
+<b class="fc">&nbsp;		for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;			keep[i] = new JButton(&quot;Keep&quot;);</b>
+<b class="fc">&nbsp;			keep[i].setEnabled(false);</b>
+<b class="fc">&nbsp;			keep[i].addActionListener(this);</b>
+<b class="fc">&nbsp;			keep[i].setPreferredSize(new Dimension(65, 30));</b>
+&nbsp;		}
+<b class="fc">&nbsp;		buttons2.add(Box.createRigidArea(new Dimension(40,0)));</b>
+<b class="fc">&nbsp;		buttons2.add(keep[0]);</b>
+<b class="fc">&nbsp;		buttons2.add(Box.createRigidArea(new Dimension(0,0)));</b>
+<b class="fc">&nbsp;		buttons2.add(keep[1]);</b>
+<b class="fc">&nbsp;		buttons2.add(Box.createRigidArea(new Dimension(0,0)));</b>
+<b class="fc">&nbsp;		buttons2.add(keep[2]);</b>
+<b class="fc">&nbsp;		buttons2.add(Box.createRigidArea(new Dimension(0,0)));</b>
+<b class="fc">&nbsp;		buttons2.add(keep[3]);</b>
+<b class="fc">&nbsp;		buttons2.add(Box.createRigidArea(new Dimension(3,0)));</b>
+<b class="fc">&nbsp;		buttons2.add(keep[4]);</b>
+<b class="fc">&nbsp;		buttons2.add(Box.createRigidArea(new Dimension(5,0)));</b>
+&nbsp;
+<b class="fc">&nbsp;		keep[0].setActionCommand(&quot;keep0&quot;);</b>
+<b class="fc">&nbsp;		keep[1].setActionCommand(&quot;keep1&quot;);</b>
+<b class="fc">&nbsp;		keep[2].setActionCommand(&quot;keep2&quot;);</b>
+<b class="fc">&nbsp;		keep[3].setActionCommand(&quot;keep3&quot;);</b>
+<b class="fc">&nbsp;		keep[4].setActionCommand(&quot;keep4&quot;);</b>
+<b class="fc">&nbsp;		exchange.setActionCommand(&quot;exchange&quot;);</b>
+<b class="fc">&nbsp;		exchange.addActionListener(this);</b>
+&nbsp;
+<b class="fc">&nbsp;		call.setActionCommand(&quot;Call&quot;);</b>
+<b class="fc">&nbsp;		fold.setActionCommand(&quot;Fold&quot;);</b>
+<b class="fc">&nbsp;		bet.setActionCommand(&quot;Bet!&quot;);</b>
+<b class="fc">&nbsp;		call.addActionListener(this);</b>
+<b class="fc">&nbsp;		fold.addActionListener(this);</b>
+<b class="fc">&nbsp;		bet.addActionListener(this);</b>
+&nbsp;
+<b class="fc">&nbsp;		call.setEnabled(false);</b>
+<b class="fc">&nbsp;		fold.setEnabled(false);</b>
+<b class="fc">&nbsp;		bet.setEnabled(false);</b>
+<b class="fc">&nbsp;		bettf.setEnabled(false);</b>
+&nbsp;
+<b class="fc">&nbsp;		add(buttons2);</b>
+<b class="fc">&nbsp;		add(ex);</b>
+<b class="fc">&nbsp;		add(results);</b>
+<b class="fc">&nbsp;		playerHand = new PokerHand();</b>
+<b class="fc">&nbsp;		dealerHand = new PokerHand();</b>
+<b class="fc">&nbsp;		deck = new Deck();</b>
+<b class="fc">&nbsp;	}</b>
+&nbsp;
+&nbsp;
+&nbsp;	public void actionPerformed(ActionEvent evt) {
+<b class="fc">&nbsp;		String event = evt.getActionCommand();</b>
+&nbsp;
+<b class="fc">&nbsp;		if(event.equals(&quot;deal&quot;)){</b>
+<b class="fc">&nbsp;			pot.setText(&quot;Pot: 0&quot;);</b>
+<b class="fc">&nbsp;			amount = 0;</b>
+<b class="fc">&nbsp;			bettf.setText(&quot;       &quot;);</b>
+<b class="fc">&nbsp;			deck.shuffle();</b>
+<b class="fc">&nbsp;			exchanged = false;</b>
+<b class="fc">&nbsp;			call.setEnabled(false);</b>
+<b class="fc">&nbsp;			fold.setEnabled(true);</b>
+<b class="fc">&nbsp;			bet.setEnabled(true);</b>
+<b class="fc">&nbsp;			bettf.setEnabled(true);</b>
+<b class="fc">&nbsp;			deal.setEnabled(false);</b>
+<b class="fc">&nbsp;			for(int k = 0; k &lt; 7; k++){</b>
+<b class="fc">&nbsp;				dealercards[k].setIcon(null);</b>
+<b class="fc">&nbsp;				playercards[k].setIcon(null);</b>
+&nbsp;			}
+<b class="fc">&nbsp;			results.setText(&quot;&quot;);</b>
+<b class="fc">&nbsp;			playerHand.clearHand();</b>
+<b class="fc">&nbsp;			dealerHand.clearHand();</b>
+&nbsp;
+&nbsp;			/**
+&nbsp;			 * Deals new cards
+&nbsp;			 */
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				playerHand.addCard(deck.dealCard());</b>
+<b class="fc">&nbsp;				dealerHand.addCard(deck.dealCard());</b>
+&nbsp;			}
+&nbsp;
+<b class="fc">&nbsp;			keepcards.clear();</b>
+&nbsp;
+&nbsp;			/**
+&nbsp;			 * Sets JLabels to pictures.gif
+&nbsp;			 */
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				keep[i].setEnabled(false);</b>
+<b class="fc">&nbsp;				iconName = new ImageIcon(&quot;b.gif&quot;);</b>
+<b class="fc">&nbsp;				dealercards[i].setIcon(iconName);</b>
+<b class="fc">&nbsp;                player.add(dealercards[i]);</b>
+<b class="fc">&nbsp;                repaint();</b>
+<b class="fc">&nbsp;				iconName = new ImageIcon(playerHand.getCard(i).getFileName());</b>
+<b class="fc">&nbsp;				playercards[i].setIcon(iconName);</b>
+&nbsp;			}
+&nbsp;
+&nbsp;		}
+&nbsp;
+&nbsp;
+&nbsp;		/**
+&nbsp;		 * On each click of a &quot;Keep&quot; Button:
+&nbsp;		 * 1. Disabled
+&nbsp;		 * 2. Added to keepcards ArrayList
+&nbsp;		 * 3. Checks if exchanged can be enabled
+&nbsp;		 */
+&nbsp;
+<b class="fc">&nbsp;		else if(event.equals(&quot;keep0&quot;)){</b>
+<b class="fc">&nbsp;            results.setText(null);</b>
+&nbsp;            //keep[1].setEnabled(false);
+&nbsp;
+<b class="fc">&nbsp;            if(keep[0].getText().equalsIgnoreCase(&quot;Trade&quot;)) {</b>
+<b class="fc">&nbsp;                keep[0].setText(&quot;Keep&quot;);</b>
+<b class="fc">&nbsp;                keepcards.remove(playerHand.getCard(0).getUID());</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                keep[0].setText(&quot;Trade&quot;);</b>
+<b class="fc">&nbsp;                keepcards.put(playerHand.getCard(0).getUID(),playerHand.getCard(0));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if(keepcards.size() &gt; 1){</b>
+<b class="fc">&nbsp;                exchange.setEnabled(true);</b>
+&nbsp;            }
+&nbsp;            else
+<b class="fc">&nbsp;                exchange.setEnabled(false);</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(event.equals(&quot;keep1&quot;)){</b>
+<b class="fc">&nbsp;			results.setText(null);</b>
+&nbsp;			//keep[1].setEnabled(false);
+&nbsp;
+<b class="fc">&nbsp;            if(keep[1].getText().equalsIgnoreCase(&quot;Trade&quot;)) {</b>
+<b class="fc">&nbsp;                keep[1].setText(&quot;Keep&quot;);</b>
+<b class="fc">&nbsp;                keepcards.remove(playerHand.getCard(1).getUID());</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                keep[1].setText(&quot;Trade&quot;);</b>
+<b class="fc">&nbsp;                keepcards.put(playerHand.getCard(1).getUID(),playerHand.getCard(1));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if(keepcards.size() &gt; 1){</b>
+<b class="fc">&nbsp;				exchange.setEnabled(true);</b>
+&nbsp;			}
+&nbsp;            else
+<b class="fc">&nbsp;                exchange.setEnabled(false);</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(event.equals(&quot;keep2&quot;)){</b>
+<b class="fc">&nbsp;            results.setText(null);</b>
+&nbsp;            //keep[1].setEnabled(false);
+&nbsp;
+<b class="fc">&nbsp;            if(keep[2].getText().equalsIgnoreCase(&quot;Trade&quot;)) {</b>
+<b class="fc">&nbsp;                keep[2].setText(&quot;Keep&quot;);</b>
+<b class="fc">&nbsp;                keepcards.remove(playerHand.getCard(2).getUID());</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                keep[2].setText(&quot;Trade&quot;);</b>
+<b class="fc">&nbsp;                keepcards.put(playerHand.getCard(2).getUID(),playerHand.getCard(2));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if(keepcards.size() &gt; 1){</b>
+<b class="fc">&nbsp;                exchange.setEnabled(true);</b>
+&nbsp;            }
+&nbsp;            else
+<b class="fc">&nbsp;                exchange.setEnabled(false);</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(event.equals(&quot;keep3&quot;)){</b>
+<b class="fc">&nbsp;            results.setText(null);</b>
+&nbsp;            //keep[1].setEnabled(false);
+&nbsp;
+<b class="fc">&nbsp;            if(keep[3].getText().equalsIgnoreCase(&quot;Trade&quot;)) {</b>
+<b class="fc">&nbsp;                keep[3].setText(&quot;Keep&quot;);</b>
+<b class="fc">&nbsp;                keepcards.remove(playerHand.getCard(3).getUID());</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                keep[3].setText(&quot;Trade&quot;);</b>
+<b class="fc">&nbsp;                keepcards.put(playerHand.getCard(3).getUID(),playerHand.getCard(3));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if(keepcards.size() &gt; 1){</b>
+<b class="fc">&nbsp;                exchange.setEnabled(true);</b>
+&nbsp;            }
+&nbsp;            else
+<b class="fc">&nbsp;                exchange.setEnabled(false);</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(event.equals(&quot;keep4&quot;)){</b>
+<b class="fc">&nbsp;            results.setText(null);</b>
+&nbsp;            //keep[1].setEnabled(false);
+&nbsp;
+<b class="fc">&nbsp;            if(keep[4].getText().equalsIgnoreCase(&quot;Trade&quot;)) {</b>
+<b class="fc">&nbsp;                keep[4].setText(&quot;Keep&quot;);</b>
+<b class="fc">&nbsp;                keepcards.remove(playerHand.getCard(4).getUID());</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                keep[4].setText(&quot;Trade&quot;);</b>
+<b class="fc">&nbsp;                keepcards.put(playerHand.getCard(4).getUID(),playerHand.getCard(4));</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if(keepcards.size() &gt; 1){</b>
+<b class="fc">&nbsp;                exchange.setEnabled(true);</b>
+&nbsp;            }
+&nbsp;            else
+<b class="fc">&nbsp;                exchange.setEnabled(false);</b>
+&nbsp;		}
+&nbsp;
+&nbsp;		/**
+&nbsp;		 * Exchanges cards that weren&#39;t kept for new ones
+&nbsp;		 */
+<b class="fc">&nbsp;		else if(event.equals(&quot;exchange&quot;)){</b>
+&nbsp;            //Set up an iterator for the hashmap
+<b class="fc">&nbsp;            Iterator iter = keepcards.entrySet().iterator();</b>
+&nbsp;
+<b class="fc">&nbsp;            exchanged = true;</b>
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				keep[i].setEnabled(false);</b>
+&nbsp;			}
+<b class="fc">&nbsp;			exchange.setEnabled(false);</b>
+<b class="fc">&nbsp;			playerHand.clearHand();</b>
+<b class="fc">&nbsp;			bettf.setEnabled(true);</b>
+<b class="fc">&nbsp;			bet.setEnabled(true);</b>
+&nbsp;
+&nbsp;			/**
+&nbsp;			 * Keeps cards from the keepcards ArrayList back to the hand
+&nbsp;			 */
+<b class="fc">&nbsp;            int count = 1;</b>
+<b class="fc">&nbsp;			for(Map.Entry&lt;String,Card&gt; entry : keepcards.entrySet()){</b>
+<b class="fc">&nbsp;				playerHand.addCard(entry.getValue());</b>
+<b class="fc">&nbsp;			}</b>
+&nbsp;
+&nbsp;            //Add remaining cards
+<b class="fc">&nbsp;            while(playerHand.addCard(deck.dealCard()));</b>
+&nbsp;
+&nbsp;			/**
+&nbsp;			 * GUI changing of pictures
+&nbsp;			 */
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				iconName = new ImageIcon(playerHand.getCard(i).getFileName());</b>
+<b class="fc">&nbsp;				playercards[i].setIcon(iconName);</b>
+&nbsp;			}
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;			dealerHand.dealerExchange(deck, dealercards);</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;		}</b>
+&nbsp;
+<b class="fc">&nbsp;		else if(event.equals(&quot;Fold&quot;)){</b>
+&nbsp;
+<b class="fc">&nbsp;			results.setText(&quot;You have folded. You lose $&quot; + amount + &quot;!&quot;);</b>
+<b class="fc">&nbsp;			bet.setEnabled(false);</b>
+<b class="fc">&nbsp;			bettf.setEnabled(false);</b>
+<b class="fc">&nbsp;			fold.setEnabled(false);</b>
+<b class="fc">&nbsp;			call.setEnabled(false);</b>
+<b class="fc">&nbsp;			exchange.setEnabled(false);</b>
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				keep[i].setEnabled(false);</b>
+&nbsp;			}
+<b class="fc">&nbsp;			deal.setEnabled(true);</b>
+<b class="fc">&nbsp;			pot.setText(&quot;Pot: $0&quot;);</b>
+<b class="fc">&nbsp;			return;</b>
+&nbsp;		}
+&nbsp;
+<b class="fc">&nbsp;		else if(event.equals(&quot;Bet!&quot;)){</b>
+&nbsp;
+&nbsp;            try{
+<b class="fc">&nbsp;			    playerbet = Integer.parseInt(bettf.getText().trim());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            catch(NumberFormatException e){</b>
+<b class="fc">&nbsp;                results.setText(&quot;Please enter a number&quot;);</b>
+<b class="fc">&nbsp;                return;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;			bettf.setText(&quot;       &quot;);</b>
+<b class="fc">&nbsp;			if(playerbet &lt; 0){</b>
+<b class="fc">&nbsp;                results.setText(&quot;No cheating!&quot;);</b>
+<b class="fc">&nbsp;				return;</b>
+&nbsp;			}
+&nbsp;
+<b class="fc">&nbsp;			amount += playerbet;</b>
+<b class="fc">&nbsp;			pot.setText(&quot;Pot: $&quot; + amount);</b>
+&nbsp;
+<b class="fc">&nbsp;			dealbet = dealerHand.bet(playerbet);</b>
+&nbsp;
+<b class="fc">&nbsp;			if(dealbet == -1){</b>
+<b class="fc">&nbsp;				results.setText(&quot;The dealer folded. You win $&quot; + amount + &quot;!&quot;);</b>
+<b class="fc">&nbsp;				pot.setText(&quot;Pot: $0&quot;);</b>
+<b class="fc">&nbsp;				bet.setEnabled(false);</b>
+<b class="fc">&nbsp;				bettf.setEnabled(false);</b>
+<b class="fc">&nbsp;				fold.setEnabled(false);</b>
+<b class="fc">&nbsp;				call.setEnabled(false);</b>
+<b class="fc">&nbsp;				deal.setEnabled(true);</b>
+<b class="fc">&nbsp;				return;</b>
+&nbsp;			}
+<b class="fc">&nbsp;			else if(dealbet &gt; playerbet){</b>
+<b class="fc">&nbsp;				results.setText(&quot;The dealer has raised you $&quot; + (dealbet - playerbet) + &quot;!&quot;);</b>
+<b class="fc">&nbsp;				amount += dealbet;</b>
+<b class="fc">&nbsp;				pot.setText(&quot;Pot: $&quot; + amount);</b>
+<b class="fc">&nbsp;				call.setEnabled(true);</b>
+<b class="fc">&nbsp;				fold.setEnabled(true);</b>
+<b class="fc">&nbsp;				bet.setEnabled(false);</b>
+<b class="fc">&nbsp;				bettf.setEnabled(false);</b>
+<b class="fc">&nbsp;				return;</b>
+&nbsp;			}
+&nbsp;			else{
+<b class="fc">&nbsp;				bet.setEnabled(false);</b>
+<b class="fc">&nbsp;				bettf.setEnabled(false);</b>
+<b class="fc">&nbsp;				results.setText(&quot;The dealer called.&quot;);</b>
+<b class="fc">&nbsp;				amount += dealbet;</b>
+<b class="fc">&nbsp;				pot.setText(&quot;Pot: $&quot; + amount);</b>
+&nbsp;			}
+&nbsp;
+<b class="fc">&nbsp;			if(exchanged){</b>
+<b class="fc">&nbsp;				for(int i = 0; i &lt; dealerHand.getHand().size(); i++){</b>
+<b class="fc">&nbsp;					Icon iconName = new ImageIcon(dealerHand.getHand().get(i).getFileName());</b>
+<b class="fc">&nbsp;					dealercards[i].setIcon(iconName);</b>
+&nbsp;				}
+<b class="fc">&nbsp;				fold.setEnabled(false);</b>
+<b class="fc">&nbsp;				if(playerHand.PokerValue()[0] &gt; dealerHand.PokerValue()[0]){</b>
+<b class="fc">&nbsp;					results.setText(&quot;You win $&quot; + amount + &quot; with a &quot; + playerHand.showPokerValue());</b>
+&nbsp;				}
+<b class="fc">&nbsp;				else if(playerHand.PokerValue()[0] &lt; dealerHand.PokerValue()[0]){</b>
+<b class="fc">&nbsp;					results.setText(&quot;You lose $&quot; + amount + &quot; to a &quot; + dealerHand.showPokerValue());</b>
+&nbsp;				}
+<b class="pc">&nbsp;				else if(playerHand.PokerValue()[0] == 2 &amp;&amp; dealerHand.PokerValue()[0] == 2){</b>
+&nbsp;
+<b class="fc">&nbsp;					int h = playerHand.higherHand(dealerHand);</b>
+&nbsp;
+<b class="pc">&nbsp;					if(h == -1){</b>
+<b class="nc">&nbsp;						results.setText(&quot;You win $&quot; + amount + &quot; with a &quot; + playerHand.showPokerValue());</b>
+&nbsp;					}
+<b class="pc">&nbsp;					else if(h == 1){</b>
+<b class="nc">&nbsp;						results.setText(&quot;You lose $&quot; + amount + &quot; to a &quot; + dealerHand.showPokerValue());</b>
+&nbsp;					}
+<b class="fc">&nbsp;				}</b>
+&nbsp;				else{
+<b class="fc">&nbsp;					for(int i = 1; i &lt; 3; i++){</b>
+<b class="fc">&nbsp;						if(playerHand.PokerValue()[i] &gt; dealerHand.PokerValue()[i]){</b>
+<b class="fc">&nbsp;							results.setText(&quot;You win $&quot; + amount + &quot; with a &quot; + playerHand.showPokerValue());</b>
+<b class="fc">&nbsp;							return;</b>
+&nbsp;						}
+<b class="pc">&nbsp;						else if(playerHand.PokerValue()[i] &lt; dealerHand.PokerValue()[i]){</b>
+<b class="nc">&nbsp;							results.setText(&quot;You lose $&quot; + amount + &quot; to a &quot; + dealerHand.showPokerValue());</b>
+<b class="nc">&nbsp;							return;</b>
+&nbsp;						}
+&nbsp;					}
+&nbsp;
+<b class="fc">&nbsp;					results.setText(&quot;You and the dealer tie with a &quot; + dealerHand.showPokerValue() + &quot;. You get your money back&quot;);</b>
+&nbsp;				}
+&nbsp;
+<b class="fc">&nbsp;				deal.setEnabled(true);</b>
+&nbsp;
+&nbsp;			}
+&nbsp;
+&nbsp;			else{
+&nbsp;
+<b class="fc">&nbsp;				for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;					keep[i].setEnabled(true);</b>
+&nbsp;				}
+&nbsp;			}
+&nbsp;		}
+&nbsp;
+<b class="pc">&nbsp;		else if(event.equals(&quot;Call&quot;)){</b>
+<b class="fc">&nbsp;			amount += (dealbet - playerbet);</b>
+<b class="fc">&nbsp;			pot.setText(&quot;Pot: $&quot; + amount);</b>
+<b class="fc">&nbsp;			call.setEnabled(false);</b>
+<b class="fc">&nbsp;			fold.setEnabled(false);</b>
+<b class="fc">&nbsp;			if(exchanged){</b>
+<b class="fc">&nbsp;				for(int i = 0; i &lt; dealerHand.getHand().size(); i++){</b>
+<b class="fc">&nbsp;					Icon iconName = new ImageIcon(dealerHand.getHand().get(i).getFileName());</b>
+<b class="fc">&nbsp;					dealercards[i].setIcon(iconName);</b>
+&nbsp;				}
+<b class="fc">&nbsp;				fold.setEnabled(false);</b>
+<b class="fc">&nbsp;				if(playerHand.PokerValue()[0] &gt; dealerHand.PokerValue()[0]){</b>
+<b class="fc">&nbsp;					results.setText(&quot;You win $&quot; + amount + &quot; with a &quot; + playerHand.showPokerValue());</b>
+&nbsp;				}
+<b class="fc">&nbsp;				else if(playerHand.PokerValue()[0] &lt; dealerHand.PokerValue()[0]){</b>
+<b class="fc">&nbsp;					results.setText(&quot;You lose $&quot; + amount + &quot; to a &quot; + dealerHand.showPokerValue());</b>
+&nbsp;				}
+<b class="pc">&nbsp;				else if(playerHand.PokerValue()[0] == 2 &amp;&amp; dealerHand.PokerValue()[0] == 2){</b>
+&nbsp;
+<b class="nc">&nbsp;					int h = playerHand.higherHand(dealerHand);</b>
+<b class="nc">&nbsp;					System.out.println(h);</b>
+<b class="nc">&nbsp;					if(h == -1){</b>
+<b class="nc">&nbsp;						results.setText(&quot;You win $&quot; + amount + &quot; with a &quot; + playerHand.showPokerValue());</b>
+&nbsp;					}
+<b class="nc">&nbsp;					else if(h == 1){</b>
+<b class="nc">&nbsp;						results.setText(&quot;You lose $&quot; + amount + &quot; to a &quot; + dealerHand.showPokerValue());</b>
+&nbsp;					}
+<b class="nc">&nbsp;				}</b>
+&nbsp;				else{
+<b class="fc">&nbsp;					for(int i = 1; i &lt; 3; i++){</b>
+<b class="fc">&nbsp;						if(playerHand.PokerValue()[i] &gt; dealerHand.PokerValue()[i]){</b>
+<b class="fc">&nbsp;							results.setText(&quot;You win $&quot; + amount + &quot; with a &quot; + playerHand.showPokerValue());</b>
+<b class="fc">&nbsp;							deal.setEnabled(true);</b>
+<b class="fc">&nbsp;							return;</b>
+&nbsp;						}
+<b class="fc">&nbsp;						else if(playerHand.PokerValue()[i] &lt; dealerHand.PokerValue()[i]){</b>
+<b class="fc">&nbsp;							results.setText(&quot;You lose $&quot; + amount + &quot; to a &quot; + dealerHand.showPokerValue());</b>
+<b class="fc">&nbsp;							deal.setEnabled(true);</b>
+<b class="fc">&nbsp;							return;</b>
+&nbsp;						}
+&nbsp;					}
+&nbsp;
+<b class="fc">&nbsp;					results.setText(&quot;You and the dealer tie with a &quot; + dealerHand.showPokerValue() + &quot;. You get your money back&quot;);</b>
+&nbsp;				}
+&nbsp;
+<b class="fc">&nbsp;				deal.setEnabled(true);</b>
+&nbsp;
+&nbsp;			}
+&nbsp;			else{
+<b class="fc">&nbsp;				for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;					keep[i].setEnabled(true);</b>
+&nbsp;				}
+&nbsp;
+&nbsp;			}
+&nbsp;
+&nbsp;		}
+&nbsp;
+&nbsp;
+&nbsp;//        class cardID{
+&nbsp;//            private Card.Suits suit;
+&nbsp;//            private Card.Cards card;
+&nbsp;//        }
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;	}</b>
+&nbsp;
+&nbsp;
+&nbsp;	public static void main(String[] args){
+<b class="fc">&nbsp;		Poker window = new Poker(&quot;Poker&quot;);</b>
+<b class="fc">&nbsp;		window.show();</b>
+<b class="fc">&nbsp;	}</b>
+&nbsp;
+&nbsp;	// Methods added by tester
+&nbsp;	public JButton getDealButton() {
+<b class="fc">&nbsp;		return deal;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public JButton getBetButton() {
+<b class="fc">&nbsp;		return bet;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public JButton getCallButton() {
+<b class="fc">&nbsp;		return call;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public JButton getFoldButton() {
+<b class="fc">&nbsp;		return fold;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public JTextField getBetTextField() {
+<b class="fc">&nbsp;		return bettf;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public JTextField getResultsTextField() {
+<b class="fc">&nbsp;		return results;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;
+&nbsp;	public JButton getExchangeButton() {
+<b class="fc">&nbsp;		return exchange;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public PokerHand getPlayerHand() {
+<b class="fc">&nbsp;		return playerHand;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public PokerHand getDealerHand() {
+<b class="fc">&nbsp;		return dealerHand;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public JButton[] getKeep() {
+<b class="fc">&nbsp;		return keep;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-28 16:42</div>
+</div>
+</body>
+</html>

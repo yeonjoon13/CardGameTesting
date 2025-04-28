@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Hand</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Hand (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Hand</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (18/18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;///////////////////////////////////
+&nbsp;//Michael Melchione
+&nbsp;//AP Computer Science A
+&nbsp;//1-12-12
+&nbsp;//BlackJack Program
+&nbsp;///////////////////////////////////
+&nbsp;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;public class Hand 
+&nbsp;{
+&nbsp;	protected ArrayList&lt;Card&gt; hand;
+&nbsp;    private int maxSize; //Maximum size of the hand.
+&nbsp;
+&nbsp;	public Hand(int maxSize)
+<b class="fc">&nbsp;	{</b>
+<b class="fc">&nbsp;		hand = new ArrayList&lt;Card&gt;();</b>
+<b class="fc">&nbsp;        this.maxSize = maxSize;</b>
+<b class="fc">&nbsp;	}</b>
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Adds a card to the hand. If the hand is full, the method returns false.
+&nbsp;	 * @param currentCard Card to be added to the hand.
+&nbsp;	 * @return true on success, false on failure.
+&nbsp;	 */
+&nbsp;	public boolean addCard(Card currentCard)
+&nbsp;	{
+<b class="fc">&nbsp;        if(hand.size() &gt;= maxSize){</b>
+<b class="fc">&nbsp;             return false;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;		hand.add(currentCard);</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Return the number of Cards in the Hand.
+&nbsp;	 * @return The number of Cards in the Hand.
+&nbsp;	 */
+&nbsp;	public int getSize()
+&nbsp;	{
+<b class="fc">&nbsp;		return hand.size();</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Removes a card from the Hand.
+&nbsp;	 * @param cardPosition Position of the Card in the Hand that 
+&nbsp;	 * will be removed.
+&nbsp;	 */
+&nbsp;	public void removeCard(int cardPosition)
+&nbsp;	{
+<b class="fc">&nbsp;		hand.remove(cardPosition - 1);</b>
+<b class="fc">&nbsp;	}</b>
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Removes a card from the Hand.
+&nbsp;	 * @param currentCard Card that will be removed.
+&nbsp;	 */
+&nbsp;	public void removeCard(Card currentCard)
+&nbsp;	{
+<b class="fc">&nbsp;		hand.remove(currentCard);</b>
+<b class="fc">&nbsp;	}</b>
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Empties the Hand of all his Cards.
+&nbsp;	 */
+&nbsp;	public void clearHand()
+&nbsp;	{
+<b class="fc">&nbsp;		hand.clear();</b>
+<b class="fc">&nbsp;	}</b>
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Gets the Card at the given Position in the Hand.
+&nbsp;	 * @param i The position of the Card in the Hand.
+&nbsp;	 * @return The Card at the given position in the Hand.
+&nbsp;	 */
+&nbsp;	public Card getCard(int i)
+&nbsp;	{
+<b class="fc">&nbsp;		return hand.get(i);</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Return the cards of the hand in an ArrayList.
+&nbsp;	 * @return Cards of the Hand.
+&nbsp;	 */
+&nbsp;	public ArrayList&lt;Card&gt; getHand(){
+<b class="fc">&nbsp;		return hand;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	/**
+&nbsp;	 * Gets the maximal number of Cards that are allowed in the Hand.
+&nbsp;	 * @return the maximal number of Cards that are allowed in the Hand.
+&nbsp;	 */
+&nbsp;    public int getMaxSize(){
+<b class="fc">&nbsp;        return maxSize;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-28 16:42</div>
+</div>
+</body>
+</html>

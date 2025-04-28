@@ -1,0 +1,300 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Card</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Card (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Card</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Card$Cards</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (17/17)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Card$Suits</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (29/29)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;///////////////////////////////////
+&nbsp;//Michael Melchione
+&nbsp;//AP Computer Science A
+&nbsp;//1-6-12
+&nbsp;//Card Games Program
+&nbsp;///////////////////////////////////
+&nbsp;
+&nbsp;public class Deck {
+&nbsp;	private Card [] deck;
+&nbsp;	private int dealt;
+&nbsp;
+&nbsp;    public Deck(){
+&nbsp;		int i;
+&nbsp;		int cardNum = 0;
+&nbsp;		
+&nbsp;		deck = new Card[52];
+&nbsp;
+&nbsp;
+&nbsp;        for(Card.Suits s : Card.Suits.values()){
+&nbsp;           for(Card.Cards c : Card.Cards.values()){
+&nbsp;               deck[cardNum] = new Card(c,s);
+&nbsp;               cardNum++;
+&nbsp;            }
+&nbsp;        }
+&nbsp;		
+&nbsp;		dealt = 0;
+&nbsp;	}
+&nbsp;	
+&nbsp;    /**
+&nbsp;     * Shuffles the cards of the deck.
+&nbsp;     */
+&nbsp;	public void shuffle(){
+&nbsp;		int i;
+&nbsp;		int rand;
+&nbsp;		Card temp;
+&nbsp;		
+&nbsp;		for(i = 0; i &lt; deck.length; i++){
+&nbsp;			rand = (int)(Math.random() * 52);
+&nbsp;			temp = deck[i];
+&nbsp;			deck[i] = deck[rand];
+&nbsp;			deck[rand] = temp;
+&nbsp;		}
+&nbsp;		
+&nbsp;		dealt = 0;
+&nbsp;	}
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Deals a Card from the Deck. The dealt card will no more be deal by the 
+&nbsp;	 * deck. If no cards are left, a IllegalStateException is thrown.
+&nbsp;	 * @return A Card from the deck.
+&nbsp;	 */
+&nbsp;	public Card dealCard(){
+&nbsp;		if(dealt == 52)
+&nbsp;			throw new IllegalStateException(&quot;No cards left in the deck!!!&quot;);
+&nbsp;		
+&nbsp;		else{
+&nbsp;			dealt++;
+&nbsp;			return (deck[dealt - 1]);
+&nbsp;		}
+&nbsp;		
+&nbsp;	}
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;class Card{
+&nbsp;    private Cards card;
+&nbsp;    private Suits suit;
+&nbsp;    private String UID;
+&nbsp;
+<b class="fc">&nbsp;    public static enum Cards{</b>
+<b class="fc">&nbsp;        Two(2),</b>
+<b class="fc">&nbsp;        Three(3),</b>
+<b class="fc">&nbsp;        Four(4),</b>
+<b class="fc">&nbsp;        Five(5),</b>
+<b class="fc">&nbsp;        Six(6),</b>
+<b class="fc">&nbsp;        Seven(7),</b>
+<b class="fc">&nbsp;        Eight(8),</b>
+<b class="fc">&nbsp;        Nine(9),</b>
+<b class="fc">&nbsp;        Ten(10),</b>
+<b class="fc">&nbsp;        Jack(11),</b>
+<b class="fc">&nbsp;        Queen(12),</b>
+<b class="fc">&nbsp;        King(13),</b>
+<b class="fc">&nbsp;        Ace(14);</b>
+&nbsp;
+&nbsp;        private final int value;
+&nbsp;
+<b class="fc">&nbsp;        Cards(int value){</b>
+<b class="fc">&nbsp;            this.value = value;</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    };
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public static enum Suits{Hearts,Diamonds,Clubs,Spades};</b>
+&nbsp;
+&nbsp;
+&nbsp;    public Card(Cards card,Suits suit)
+<b class="fc">&nbsp;    {</b>
+<b class="fc">&nbsp;        this.card = card;</b>
+<b class="fc">&nbsp;        this.suit = suit;</b>
+<b class="fc">&nbsp;        this.UID = Integer.toString(card.ordinal()) + Integer.toString(suit.ordinal());</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Return the {@link Suits}&#39; String of the given Card. Possible values:
+&nbsp;     * - &quot;Hearts&quot;
+&nbsp;     * - &quot;Diamonds&quot;
+&nbsp;     * - &quot;Clubs&quot;
+&nbsp;     * - &quot;Spades&quot;
+&nbsp;     * @return String of the Suit of the Card.
+&nbsp;     */
+&nbsp;    public String getSuitString()
+&nbsp;    {
+<b class="fc">&nbsp;        return suit.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Return the {@link Suits} of the given Card. 
+&nbsp;     * @return Suit of the Card.
+&nbsp;     */
+&nbsp;    public Suits getSuit(){
+<b class="fc">&nbsp;        return suit;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets the Card Number.
+&nbsp;     * @return Card Number.
+&nbsp;     */
+&nbsp;    public int getCardNumber(){
+<b class="fc">&nbsp;        return card.ordinal();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Return the relative file location of the image of the Card.
+&nbsp;     * @return File location of the card&#39;s image.
+&nbsp;     */
+&nbsp;    public String getFileName(){
+<b class="fc">&nbsp;        return &quot;Cards/&quot; + card.toString() + &quot; of &quot; + suit.toString() + &quot;.gif&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getUID(){
+<b class="fc">&nbsp;        return UID;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String toString(){
+<b class="fc">&nbsp;        return card.toString() + &quot; of &quot; + suit.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-28 16:42</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,635 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > PokerHand</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: PokerHand (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PokerHand</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    68.4%
+  </span>
+  <span class="absValue">
+    (171/250)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    73.4%
+  </span>
+  <span class="absValue">
+    (207/282)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;import javax.swing.JLabel;
+&nbsp;
+&nbsp;public class PokerHand extends Hand{
+&nbsp;	
+&nbsp;	public PokerHand(){
+<b class="fc">&nbsp;		super(5); //5 card poker?</b>
+<b class="fc">&nbsp;	}</b>
+&nbsp;	
+&nbsp;	public int[] PokerValue(){
+<b class="fc">&nbsp;		int [] pv = new int[7];</b>
+<b class="fc">&nbsp;		int curr = 1;</b>
+<b class="fc">&nbsp;		int clubs = 0, spades = 0, hearts = 0, diamonds = 0;</b>
+<b class="fc">&nbsp;		int s = 0;</b>
+<b class="fc">&nbsp;		boolean straight = false, flush = false;</b>
+<b class="fc">&nbsp;		Card temp[] = new Card[hand.size()];</b>
+<b class="fc">&nbsp;		int n = temp.length;</b>
+&nbsp;		
+<b class="fc">&nbsp;		for(int i = 0; i &lt; hand.size(); i++){</b>
+<b class="fc">&nbsp;			temp[i] = hand.get(i);</b>
+&nbsp;		}
+&nbsp;		
+<b class="fc">&nbsp;		for (int pass=1; pass &lt; n; pass++) { </b>
+<b class="fc">&nbsp;	        for (int i=0; i &lt; n-pass; i++) {</b>
+<b class="fc">&nbsp;	            if (temp[i].getCardNumber() &gt; temp[i+1].getCardNumber()) {</b>
+<b class="fc">&nbsp;	                Card t = temp[i];  </b>
+<b class="fc">&nbsp;	                temp[i] = temp[i+1];  </b>
+<b class="fc">&nbsp;	                temp[i+1] = t;</b>
+&nbsp;	            }
+&nbsp;	        }
+&nbsp;	    }
+&nbsp;
+<b class="fc">&nbsp;		for(int i = 0; i &lt; hand.size(); i++){</b>
+<b class="pc">&nbsp;			if(getCard(i).getSuit().equals(&quot;Clubs&quot;)){</b>
+<b class="nc">&nbsp;				clubs++;</b>
+&nbsp;			}
+<b class="pc">&nbsp;			else if(getCard(i).getSuit().equals(&quot;Spades&quot;)){</b>
+<b class="nc">&nbsp;				spades++;</b>
+&nbsp;			}
+<b class="pc">&nbsp;			else if(getCard(i).getSuit().equals(&quot;Hearts&quot;)){</b>
+<b class="nc">&nbsp;				hearts++;</b>
+&nbsp;			}
+&nbsp;			else
+<b class="fc">&nbsp;				diamonds++;</b>
+&nbsp;			
+&nbsp;		}
+&nbsp;		
+<b class="pc">&nbsp;		if((clubs == 5) || (spades == 5) || (hearts == 5) || (diamonds == 5)){</b>
+<b class="fc">&nbsp;			flush = true;</b>
+<b class="fc">&nbsp;			pv[1] = temp[hand.size() - 1].getCardNumber();</b>
+<b class="fc">&nbsp;			pv[2] = temp[hand.size() - 2].getCardNumber();</b>
+<b class="fc">&nbsp;			curr += 2;</b>
+&nbsp;		}
+&nbsp;			
+&nbsp;		
+<b class="fc">&nbsp;		for(int i = 0; i &lt; hand.size() - 1; i++){</b>
+<b class="fc">&nbsp;			if(temp[i+1].getCardNumber() - temp[i].getCardNumber() == 1){</b>
+<b class="fc">&nbsp;				s++;</b>
+&nbsp;			}	
+&nbsp;			else{
+&nbsp;				break;
+&nbsp;			}
+&nbsp;		}	
+&nbsp;		
+<b class="fc">&nbsp;		if(s == 4){</b>
+<b class="fc">&nbsp;			straight = true;</b>
+<b class="fc">&nbsp;			pv[1] = temp[hand.size() - 1].getCardNumber();</b>
+<b class="fc">&nbsp;			pv[2] = temp[hand.size() - 2].getCardNumber();</b>
+<b class="fc">&nbsp;			curr += 2;</b>
+&nbsp;		}
+&nbsp;		
+<b class="fc">&nbsp;		boolean pair = false, twopair = false, three = false, fullhouse = false, fourkind = false;</b>
+<b class="fc">&nbsp;		for(int i = 1; i &lt;= 13; i++){</b>
+<b class="fc">&nbsp;			int count = 0;</b>
+<b class="fc">&nbsp;			for(Card c : hand){</b>
+<b class="fc">&nbsp;				if(c.getCardNumber() == i){</b>
+<b class="fc">&nbsp;					count++;</b>
+&nbsp;				}
+<b class="fc">&nbsp;			}</b>
+<b class="fc">&nbsp;			if(count == 2){</b>
+<b class="fc">&nbsp;				if(pair){</b>
+<b class="fc">&nbsp;					twopair = true;</b>
+<b class="fc">&nbsp;					pv[curr] = i;</b>
+<b class="fc">&nbsp;					curr++;</b>
+&nbsp;				}
+<b class="fc">&nbsp;				else if(three){</b>
+<b class="fc">&nbsp;					fullhouse = true;</b>
+<b class="fc">&nbsp;					pv[curr] = i;</b>
+<b class="fc">&nbsp;					curr++;</b>
+&nbsp;				}
+&nbsp;				else{
+<b class="fc">&nbsp;					pair = true;</b>
+<b class="fc">&nbsp;					pv[curr] = i;</b>
+<b class="fc">&nbsp;					curr++;</b>
+&nbsp;				}
+&nbsp;			}
+<b class="fc">&nbsp;			else if(count == 3){</b>
+<b class="fc">&nbsp;				if(pair){</b>
+<b class="fc">&nbsp;					fullhouse = true;</b>
+<b class="fc">&nbsp;					pv[curr] = i;</b>
+<b class="fc">&nbsp;					curr++;</b>
+&nbsp;				}
+&nbsp;				else{
+<b class="fc">&nbsp;					three = true;</b>
+<b class="fc">&nbsp;					pv[curr] = i;</b>
+<b class="fc">&nbsp;					curr++;</b>
+&nbsp;				}
+&nbsp;			}
+<b class="fc">&nbsp;			else if(count == 4){</b>
+<b class="fc">&nbsp;				fourkind = true;</b>
+<b class="fc">&nbsp;				pv[curr] = i;</b>
+<b class="fc">&nbsp;				curr++;</b>
+&nbsp;			}
+&nbsp;			
+&nbsp;		}
+&nbsp;		
+<b class="pc">&nbsp;		if((straight) &amp;&amp; (flush)){</b>
+<b class="fc">&nbsp;			pv[0] = 10;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(fourkind){</b>
+<b class="fc">&nbsp;			pv[0] = 9;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(fullhouse){</b>
+<b class="fc">&nbsp;			pv[0] = 8;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(flush){</b>
+<b class="fc">&nbsp;			pv[0] = 7;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(straight){</b>
+<b class="nc">&nbsp;			pv[0] = 6;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(three){</b>
+<b class="nc">&nbsp;			pv[0] = 5;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(twopair){</b>
+<b class="nc">&nbsp;			pv[0] = 4;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(pair){</b>
+<b class="nc">&nbsp;			pv[0] = 3;</b>
+&nbsp;		}
+&nbsp;		else
+<b class="fc">&nbsp;			pv[0] = 2;</b>
+&nbsp;		
+<b class="fc">&nbsp;		return pv;</b>
+&nbsp;
+&nbsp;	}
+&nbsp;
+&nbsp;
+&nbsp;	public String showPokerValue(){
+<b class="fc">&nbsp;		if(PokerValue()[0] == 10){</b>
+<b class="fc">&nbsp;			return &quot;Straight Flush&quot;;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(PokerValue()[0] == 9){</b>
+<b class="fc">&nbsp;			return &quot;Four of a Kind&quot;;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(PokerValue()[0]== 8){</b>
+<b class="fc">&nbsp;			return &quot;Full House&quot;;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(PokerValue()[0] == 7){</b>
+<b class="fc">&nbsp;			return &quot;Flush&quot;;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(PokerValue()[0] == 6){</b>
+<b class="nc">&nbsp;			return &quot;Straight&quot;;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(PokerValue()[0] == 5){</b>
+<b class="nc">&nbsp;			return &quot;Three of a Kind&quot;;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(PokerValue()[0] == 4){</b>
+<b class="nc">&nbsp;			return &quot;Two Pair&quot;;</b>
+&nbsp;		}
+<b class="pc">&nbsp;		else if(PokerValue()[0] == 3){</b>
+<b class="nc">&nbsp;			return &quot;Pair&quot;;</b>
+&nbsp;		}
+&nbsp;		else{
+<b class="fc">&nbsp;			return &quot;Higher Card&quot;;</b>
+&nbsp;		}
+&nbsp;		
+&nbsp;	}
+&nbsp;
+&nbsp;	public void dealerExchange(Deck d, JLabel[] dc){
+<b class="fc">&nbsp;		ArrayList&lt;Card&gt; keepcards = new ArrayList&lt;Card&gt;();</b>
+&nbsp;		
+<b class="pc">&nbsp;		if(PokerValue()[0] == 10 || PokerValue()[0] == 8 || PokerValue()[0] == 7 || PokerValue()[0] == 6){</b>
+<b class="fc">&nbsp;			return;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		else if(PokerValue()[0] == 9){</b>
+<b class="fc">&nbsp;			int val = 0;</b>
+<b class="fc">&nbsp;			if(hand.get(0).getCardNumber() == hand.get(1).getCardNumber()){</b>
+<b class="fc">&nbsp;				val = hand.get(0).getCardNumber();</b>
+&nbsp;			}
+&nbsp;				
+<b class="fc">&nbsp;			if(hand.get(3).getCardNumber() == hand.get(4).getCardNumber()){</b>
+<b class="fc">&nbsp;				val = hand.get(0).getCardNumber();</b>
+&nbsp;			}
+<b class="fc">&nbsp;			Card c = null;</b>
+&nbsp;			
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				c = hand.get(i);	</b>
+&nbsp;				
+<b class="fc">&nbsp;				if(c.getCardNumber() == val){</b>
+<b class="fc">&nbsp;					keepcards.add(c);</b>
+&nbsp;				}
+<b class="pc">&nbsp;				else if(c.getCardNumber() &lt; 9){</b>
+<b class="nc">&nbsp;					keepcards.add(d.dealCard());</b>
+&nbsp;				}
+&nbsp;				else{
+<b class="fc">&nbsp;					keepcards.add(c);</b>
+&nbsp;				}
+&nbsp;			}
+<b class="fc">&nbsp;		}</b>
+&nbsp;		
+<b class="pc">&nbsp;		else if(PokerValue()[0] == 5){</b>
+<b class="nc">&nbsp;			int val = 0;</b>
+<b class="nc">&nbsp;			if(hand.get(0).getCardNumber() == hand.get(1).getCardNumber()){</b>
+<b class="nc">&nbsp;				val = hand.get(0).getCardNumber();</b>
+&nbsp;			}
+&nbsp;				
+<b class="nc">&nbsp;			else if(hand.get(3).getCardNumber() == hand.get(4).getCardNumber()){</b>
+<b class="nc">&nbsp;				val = hand.get(0).getCardNumber();</b>
+&nbsp;			}
+<b class="nc">&nbsp;			else if(hand.get(2).getCardNumber() == hand.get(3).getCardNumber()){</b>
+<b class="nc">&nbsp;				val = hand.get(0).getCardNumber();</b>
+&nbsp;			}
+<b class="nc">&nbsp;			if(hand.get(0).getCardNumber() == hand.get(4).getCardNumber()){</b>
+<b class="nc">&nbsp;				val = hand.get(0).getCardNumber();</b>
+&nbsp;			}
+&nbsp;			
+<b class="nc">&nbsp;			Card c = null;</b>
+&nbsp;			
+<b class="nc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="nc">&nbsp;				c = hand.get(i);	</b>
+&nbsp;				
+<b class="nc">&nbsp;				if(c.getCardNumber() == val){</b>
+<b class="nc">&nbsp;					keepcards.add(c);</b>
+&nbsp;				}
+&nbsp;				else{
+<b class="nc">&nbsp;					keepcards.add(d.dealCard());</b>
+&nbsp;				}
+&nbsp;			}
+<b class="nc">&nbsp;		}</b>
+&nbsp;		
+<b class="fc">&nbsp;		else if(PokerValue()[0] == 4){</b>
+<b class="fc">&nbsp;			int val1 = -1;</b>
+<b class="fc">&nbsp;			int val2 = -1;</b>
+&nbsp;			
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				Card c = hand.get(i);</b>
+<b class="fc">&nbsp;				for(int j = 0; j &lt; 5; j++){</b>
+<b class="fc">&nbsp;					Card a = hand.get(j);</b>
+&nbsp;					
+<b class="pc">&nbsp;					if(c.getCardNumber() == a.getCardNumber() &amp;&amp; c != a){</b>
+<b class="nc">&nbsp;						if(val1 == -1){</b>
+<b class="nc">&nbsp;							val1 = c.getCardNumber();</b>
+&nbsp;						}
+&nbsp;						else{
+<b class="nc">&nbsp;							val2 = c.getCardNumber();</b>
+&nbsp;						}
+&nbsp;					}
+&nbsp;				}
+&nbsp;			}
+&nbsp;			
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				Card b = hand.get(i);</b>
+&nbsp;				
+<b class="pc">&nbsp;				if(b.getCardNumber() == val1 || b.getCardNumber() == val2){</b>
+<b class="nc">&nbsp;					keepcards.add(b);</b>
+&nbsp;				}
+&nbsp;				else{
+<b class="fc">&nbsp;					keepcards.add(d.dealCard());</b>
+&nbsp;				}
+&nbsp;			}
+<b class="fc">&nbsp;		}</b>
+&nbsp;		
+<b class="fc">&nbsp;		else if(PokerValue()[0] == 3){</b>
+<b class="fc">&nbsp;			int val = -1;</b>
+&nbsp;			
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				Card c = hand.get(i);</b>
+<b class="fc">&nbsp;				for(int j = 0; j &lt; 5; j++){</b>
+<b class="fc">&nbsp;					Card a = hand.get(j);</b>
+&nbsp;					
+<b class="fc">&nbsp;					if(c.getCardNumber() == a.getCardNumber() &amp;&amp; c != a){</b>
+<b class="fc">&nbsp;						val = c.getCardNumber();</b>
+<b class="fc">&nbsp;						break;</b>
+&nbsp;					}
+&nbsp;				}
+&nbsp;			}
+&nbsp;			
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;				Card b = hand.get(i);</b>
+&nbsp;				
+<b class="fc">&nbsp;				if(b.getCardNumber() == val){</b>
+<b class="fc">&nbsp;					keepcards.add(b);</b>
+&nbsp;				}
+&nbsp;				else{
+<b class="fc">&nbsp;					keepcards.add(d.dealCard());</b>
+&nbsp;				}
+&nbsp;			}
+<b class="fc">&nbsp;		}</b>
+&nbsp;		
+&nbsp;		else{
+<b class="fc">&nbsp;			int clubs = 0, spades = 0, diamonds = 0, hearts = 0;</b>
+<b class="fc">&nbsp;			int n = hand.size();</b>
+<b class="fc">&nbsp;			ArrayList&lt;Card&gt; temp = hand;</b>
+&nbsp;			
+<b class="fc">&nbsp;			for (int pass=1; pass &lt; n; pass++) { </b>
+<b class="fc">&nbsp;		        for (int i=0; i &lt; n-pass; i++) {</b>
+<b class="fc">&nbsp;		            if (temp.get(i).getCardNumber() &gt; temp.get(i + 1).getCardNumber()) {</b>
+<b class="fc">&nbsp;		                Card t = temp.get(i);  </b>
+<b class="fc">&nbsp;		                temp.set(i, temp.get(i + 1));  </b>
+<b class="fc">&nbsp;		                temp.set(i + 1, t);</b>
+&nbsp;		            }
+&nbsp;		        }
+&nbsp;		    }
+&nbsp;		    
+<b class="fc">&nbsp;			for(int i = 0; i &lt; 5; i++){</b>
+<b class="pc">&nbsp;				if(getCard(i).getSuit().equals(&quot;Clubs&quot;)){</b>
+<b class="nc">&nbsp;					clubs++;</b>
+<b class="nc">&nbsp;					if(clubs &gt;= 3){</b>
+<b class="nc">&nbsp;						for(int j = 0; j &lt; 5; j++){</b>
+<b class="nc">&nbsp;							if(hand.get(j).getSuit().equals(&quot;Clubs&quot;)){</b>
+<b class="nc">&nbsp;								keepcards.add(hand.get(j));</b>
+&nbsp;							}
+&nbsp;							else
+<b class="nc">&nbsp;								keepcards.add(d.dealCard());</b>
+&nbsp;						}
+&nbsp;					}
+&nbsp;				}
+<b class="pc">&nbsp;				else if(getCard(i).getSuit().equals(&quot;Spades&quot;)){</b>
+<b class="nc">&nbsp;					spades++;</b>
+<b class="nc">&nbsp;					if(spades &gt;= 3){</b>
+<b class="nc">&nbsp;						for(int j = 0; j &lt; 5; j++){</b>
+<b class="nc">&nbsp;							if(hand.get(j).getSuit().equals(&quot;Spades&quot;)){</b>
+<b class="nc">&nbsp;								keepcards.add(hand.get(j));</b>
+&nbsp;							}
+&nbsp;							else
+<b class="nc">&nbsp;								keepcards.add(d.dealCard());</b>
+&nbsp;						}
+&nbsp;					}
+&nbsp;				}
+<b class="pc">&nbsp;				else if(getCard(i).getSuit().equals(&quot;Hearts&quot;)){</b>
+<b class="nc">&nbsp;					hearts++;</b>
+<b class="nc">&nbsp;					if(hearts &gt;= 3){</b>
+&nbsp;						
+<b class="nc">&nbsp;						for(int j = 0; j &lt; 5; j++){</b>
+<b class="nc">&nbsp;							if(hand.get(j).getSuit().equals(&quot;Hearts&quot;)){</b>
+<b class="nc">&nbsp;								keepcards.add(hand.get(j));</b>
+&nbsp;							}
+&nbsp;							else
+<b class="nc">&nbsp;								keepcards.add(d.dealCard());</b>
+&nbsp;						}
+&nbsp;					}
+&nbsp;				}
+&nbsp;				else{
+<b class="fc">&nbsp;					diamonds++;</b>
+<b class="fc">&nbsp;					if(diamonds &gt;= 3){</b>
+<b class="fc">&nbsp;						for(int j = 0; j &lt; 5; j++){</b>
+<b class="pc">&nbsp;							if(hand.get(j).getSuit().equals(&quot;Diamonds&quot;)){</b>
+<b class="nc">&nbsp;								keepcards.add(hand.get(j));</b>
+&nbsp;							}
+&nbsp;							else
+<b class="fc">&nbsp;								keepcards.add(d.dealCard());</b>
+&nbsp;						}
+&nbsp;					}
+&nbsp;				}
+&nbsp;				
+&nbsp;			}
+<b class="pc">&nbsp;			if(keepcards.size() == 0){</b>
+<b class="nc">&nbsp;				int s = 0;</b>
+<b class="nc">&nbsp;				ArrayList&lt;Card&gt; st = new ArrayList&lt;Card&gt;();</b>
+&nbsp;				
+<b class="nc">&nbsp;				for(int i = 0; i &lt; 4; i++){</b>
+<b class="nc">&nbsp;					if(temp.get(i + 1).getCardNumber() - temp.get(i).getCardNumber() == 1){</b>
+<b class="nc">&nbsp;						s++;</b>
+<b class="nc">&nbsp;						if(!st.contains(temp.get(i))){</b>
+<b class="nc">&nbsp;							st.add(temp.get(i));</b>
+&nbsp;						}
+<b class="nc">&nbsp;						if(!st.contains(temp.get(i + 1))){</b>
+<b class="nc">&nbsp;							st.add(temp.get(i + 1));</b>
+&nbsp;						}
+&nbsp;						
+&nbsp;					}
+&nbsp;
+&nbsp;				}	
+&nbsp;				
+<b class="nc">&nbsp;				if(s &gt;= 2 &amp;&amp; st.get(st.size() - 1).getCardNumber() - st.get(0).getCardNumber() &lt; 4){</b>
+<b class="nc">&nbsp;					keepcards = st;</b>
+<b class="nc">&nbsp;					for(int i = keepcards.size(); i &lt;= 5; i++){</b>
+<b class="nc">&nbsp;						keepcards.add(d.dealCard());</b>
+&nbsp;					}
+&nbsp;				}
+&nbsp;				
+&nbsp;			}
+&nbsp;			
+<b class="pc">&nbsp;			if(keepcards.size() == 0){</b>
+&nbsp;				/**
+&nbsp;				 * Keep 2 highest values
+&nbsp;				 */
+<b class="nc">&nbsp;				keepcards.add(temp.get(3));</b>
+<b class="nc">&nbsp;				keepcards.add(temp.get(4));</b>
+&nbsp;				
+&nbsp;				
+<b class="nc">&nbsp;				keepcards.add(d.dealCard());</b>
+<b class="nc">&nbsp;				keepcards.add(d.dealCard());</b>
+<b class="nc">&nbsp;				keepcards.add(d.dealCard());</b>
+&nbsp;			}
+&nbsp;
+&nbsp;		}
+&nbsp;		
+&nbsp;		
+<b class="fc">&nbsp;		clearHand();</b>
+<b class="fc">&nbsp;		for(int i = 0; i &lt; 5; i++){</b>
+<b class="fc">&nbsp;			hand.add(keepcards.get(i));</b>
+&nbsp;		}
+&nbsp;		
+<b class="fc">&nbsp;	}</b>
+&nbsp;	
+&nbsp;	public int bet(int amount){
+<b class="fc">&nbsp;		int pv = PokerValue()[0];</b>
+<b class="fc">&nbsp;		if(amount &gt;= 500){</b>
+<b class="fc">&nbsp;			if(pv &lt; 4){</b>
+<b class="fc">&nbsp;				return -1;</b>
+&nbsp;			}
+<b class="pc">&nbsp;			else if(pv &lt; 7){</b>
+<b class="nc">&nbsp;				return amount;</b>
+&nbsp;			}
+&nbsp;			else{
+<b class="fc">&nbsp;				return amount + 100;</b>
+&nbsp;			}
+&nbsp;		}
+&nbsp;		
+<b class="fc">&nbsp;		else if(amount &gt;= 100){</b>
+<b class="pc">&nbsp;			if(pv &lt; 3){</b>
+<b class="nc">&nbsp;				return -1;</b>
+&nbsp;			}
+<b class="pc">&nbsp;			else if(pv &lt; 7){</b>
+<b class="nc">&nbsp;				return amount + 100;</b>
+&nbsp;			}
+&nbsp;			else{
+<b class="fc">&nbsp;				return amount * 2;</b>
+&nbsp;			}
+&nbsp;		}
+<b class="fc">&nbsp;		else if(amount &gt;= 10){</b>
+<b class="pc">&nbsp;			if(pv &lt; 3){</b>
+<b class="nc">&nbsp;				return amount;</b>
+&nbsp;			}
+<b class="pc">&nbsp;			else if(pv &lt; 7){</b>
+<b class="nc">&nbsp;				return amount * 2;</b>
+&nbsp;			}
+&nbsp;			else{
+<b class="fc">&nbsp;				return amount * 5;</b>
+&nbsp;			}
+&nbsp;		}
+&nbsp;		else{
+<b class="fc">&nbsp;			if(pv &lt; 3){</b>
+<b class="fc">&nbsp;				return amount;</b>
+&nbsp;			}
+<b class="pc">&nbsp;			else if(pv &lt; 7){</b>
+<b class="nc">&nbsp;				return amount + 100;</b>
+&nbsp;			}
+&nbsp;			else{
+<b class="fc">&nbsp;				return amount + 700;</b>
+&nbsp;			}
+&nbsp;		}
+&nbsp;
+&nbsp;	}
+&nbsp;	
+&nbsp;	public int higherHand(PokerHand dh){
+&nbsp;		
+<b class="fc">&nbsp;		Card temp[] = new Card[hand.size()];</b>
+<b class="fc">&nbsp;		int n = temp.length;</b>
+&nbsp;		
+<b class="fc">&nbsp;		for(int i = 0; i &lt; hand.size(); i++){</b>
+<b class="fc">&nbsp;			temp[i] = hand.get(i);</b>
+&nbsp;		}
+&nbsp;		
+<b class="fc">&nbsp;		for (int pass=1; pass &lt; n; pass++) { </b>
+<b class="fc">&nbsp;	        for (int i=0; i &lt; n-pass; i++) {</b>
+<b class="fc">&nbsp;	            if (temp[i].getCardNumber() &gt; temp[i+1].getCardNumber()) {</b>
+<b class="fc">&nbsp;	                Card t = temp[i];  </b>
+<b class="fc">&nbsp;	                temp[i] = temp[i+1];  </b>
+<b class="fc">&nbsp;	                temp[i+1] = t;</b>
+&nbsp;	            }
+&nbsp;	        }
+&nbsp;	    }
+&nbsp;		
+<b class="fc">&nbsp;		Card temp2[] = new Card[dh.hand.size()];</b>
+<b class="fc">&nbsp;		int num = temp2.length;</b>
+&nbsp;		
+<b class="fc">&nbsp;		for(int i = 0; i &lt; dh.hand.size(); i++){</b>
+<b class="fc">&nbsp;			temp2[i] = dh.hand.get(i);</b>
+&nbsp;		}
+&nbsp;		
+<b class="fc">&nbsp;		for (int pass=1; pass &lt; num; pass++) { </b>
+<b class="fc">&nbsp;	        for (int i=0; i &lt; num-pass; i++) {</b>
+<b class="fc">&nbsp;	            if (temp2[i].getCardNumber() &gt; temp2[i+1].getCardNumber()) {</b>
+<b class="fc">&nbsp;	                Card t = temp2[i];  </b>
+<b class="fc">&nbsp;	                temp2[i] = temp2[i+1];  </b>
+<b class="fc">&nbsp;	                temp2[i+1] = t;</b>
+&nbsp;	            }
+&nbsp;	        }
+&nbsp;	    }
+&nbsp;		
+<b class="fc">&nbsp;		for(int i = 0; i &lt; temp.length; i++){</b>
+<b class="fc">&nbsp;			if(temp[i].getCardNumber() &gt; temp2[i].getCardNumber()){</b>
+<b class="fc">&nbsp;				return -1;</b>
+&nbsp;			}
+<b class="fc">&nbsp;			else if(temp[i].getCardNumber() &lt; temp2[i].getCardNumber()){</b>
+<b class="fc">&nbsp;				return 1;</b>
+&nbsp;			}
+&nbsp;			else{
+&nbsp;				continue;
+&nbsp;			}
+&nbsp;		}
+&nbsp;		
+<b class="fc">&nbsp;		return 0;</b>
+&nbsp;	}
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-28 16:42</div>
+</div>
+</body>
+</html>
